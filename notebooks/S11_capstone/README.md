@@ -1,12 +1,51 @@
-# S11 Capstone
+# S11 Capstone（総仕上げ）
 
-| Notebook | テーマ |
+S0 から S10 まで各シリーズで層ごとに育ててきた自作ライブラリ `bondlab` を、1つのまとまりとして通しで使い、就職活動で見せられる成果物へ束ねるシリーズです。カーブ構築・債券評価・リスク計測・金利モデル・クレジット・バックテストまでの全層を、実際のデスクが使う3つの形（テスト済みライブラリ・自動値付けエンジン・朝のモニタリング画面）に載せ替えます。
+
+## このシリーズで学ぶこと
+
+- 13層からなるライブラリの依存設計（下位から上位への一方向依存）を言語化し、変更の影響範囲とテスト容易性の観点で正当化する
+- 単体テスト・回帰テスト・QuantLib 突合の3層テスト戦略と、セマンティックバージョニングによる後方互換の約束
+- RFQ（見積依頼）ワークフローの自動値付け：ミッドの推定（カーブフィット＋rich/cheap 残差）、在庫リスクに応じたスプレッドとスキュー
+- 毎朝まわす日次モニタリングの情報設計：1画面に何を載せ何を捨てるか、アラート閾値を過去分布の分位点で決める方法
+- ライブラリを FastAPI・Streamlit の実サービスの形に載せて、動く成果物として提示する
+
+## 実務での使われ方
+
+このシリーズの3つの成果物は、そのまま債券デスクの実務に対応します。詳しくは `docs/債券ファンドの業務.md` を参照してください。
+
+| 成果物 | 対応する実務 | 主に効く志望先 |
+|---|---|---|
+| bondlab ライブラリ | 値付け・リスク計測の中枢、モデルバリデーション（QuantLib 突合） | 金利デスククオンツ、リスク管理・モデルバリデーション |
+| RFQ プライサー | 電子取引・マーケットメイクの自動値付けと在庫管理 | 電子取引マーケットメイカー |
+| 日次ダッシュボード | RV デスクの朝の意思決定・リスク監視 | ヘッジファンド RV リサーチ、リスク管理 |
+
+いずれも「単発の計算」ではなく、デスクで日々まわる仕組みとして設計している点が主眼です。稼ぎ（スプレッド収益・rich/cheap やキャリーの取り込み）と損失回避（在庫スキュー・異常の早期検知）の両面を、価格と画面に落とし込みます。
+
+## 前提
+
+- S0〜S10 の各シリーズを一通り終えていること（各層の実装内容を前提にします）
+- リポジトリルートで `PYTHONPATH=$PWD` を通して実行すること
+- アプリを動かす場合は `pip install -e ".[app]"`（FastAPI / uvicorn / Streamlit）。合成サンプル（`data/samples`）で動作し、実データは `.env` に `FRED_API_KEY` を設定
+
+## Notebook 一覧
+
+| Notebook | 内容 |
 |---|---|
-| `nb_1101_bondlab_library` | bondlab ライブラリの整理とテスト（全層の通し実演・QuantLib突合一覧） |
-| `nb_1102_rfq_pricer` | RFQ プライサー（ミッド推定・在庫スキュー・FastAPI アプリ） |
-| `nb_1103_dashboard` | 日次カーブモニタリングダッシュボード（Streamlit アプリ） |
+| `nb_1101_bondlabライブラリの整理とテスト（Capstone）` | 13層の依存設計を図示し、単体・回帰・QuantLib 突合の3層テストで全層を通し実演。ライブラリが「動く状態」であることを一覧表と `pytest` 緑で証拠立てる |
+| `nb_1102_RFQプライサー（ミニ電子取引エンジン）` | 銘柄・サイズ・方向を受けて bid/ask を返すクォートエンジンを自作。ミッド推定・在庫スキュー（Avellaneda-Stoikov）・約定後の値付け精度検証まで |
+| `nb_1103_日次カーブモニタリングダッシュボード（Capstone最終）` | カーブ推移・KRD・rich/cheap・キャリー/ロール・バタフライ・アラートを1枚に束ねる朝の運用画面。閾値は過去分布の分位点で設定 |
 
-ここまでの全層（data/rates/daycount/bond/curve/analytics/risk/sim/models/pricing/
-credit/mbs/bt）を1つのライブラリとして通しで使い、就職活動で見せられる形にまとめる。
-API リファレンスは `docs/bondlab_api.md`。アプリは `app/rfq_pricer.py`（FastAPI）と
-`app/dashboard.py`（Streamlit）。
+## 使う bondlab モジュール
+
+Capstone は全層を横断して使いますが、各 notebook の主役は次のとおりです。
+
+- **S11-1**: 全13層（`data` / `rates` / `daycount` / `bond` / `curve` / `analytics` / `risk` / `sim` / `models` / `pricing` / `credit` / `mbs` / `bt`）を通しで import
+- **S11-2**: `curve`（NSS フィット）、`bond`（価格・利回り）を中心にプライサーを構成
+- **S11-3**: `curve`（カーブ構築）、`analytics`（KRD・rich/cheap・キャリー/ロール）を中心にダッシュボードを構成
+
+## アプリと API リファレンス
+
+- `app/rfq_pricer.py` — S11-2 のプライサーを HTTP 化した FastAPI アプリ。`POST /quote` に `{bond_id, size, side, inventory}` を投げると bid/ask が返る。起動: `PYTHONPATH=$PWD uvicorn app.rfq_pricer:app --reload`
+- `app/dashboard.py` — S11-3 と同一ロジックの Streamlit アプリ。基準日と分位点を選ぶと先読みなしで全パネルとアラートを再計算。起動: `PYTHONPATH=$PWD MPLBACKEND=Agg streamlit run app/dashboard.py`
+- `docs/bondlab_api.md` — `bondlab` 全層の API リファレンス
