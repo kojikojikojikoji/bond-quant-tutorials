@@ -1,0 +1,22 @@
+# secrets
+.env
+*.key
+
+# data cache (取得データは再配布しない)
+data/cache/
+
+# python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+*.egg-info/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# jupyter
+.ipynb_checkpoints/
+
+# os
+.DS_Store

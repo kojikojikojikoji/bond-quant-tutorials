@@ -1,0 +1,15 @@
+文章・notebookのmarkdownセル・glossary/・README の著作物ライセンス
+
+このリポジトリのうち、コード（bondlab/, tests/, scripts/, および各 notebook の
+コードセル）は MIT License（LICENSE 参照）で提供する。
+
+それ以外の文章コンテンツ（各 notebook の markdown セル、glossary/, interview/,
+README, 図表の説明文）は Creative Commons Attribution 4.0 International
+(CC BY 4.0) で提供する。
+https://creativecommons.org/licenses/by/4.0/
+
+帰属表示の例: "Koji Miyazawa, bond-quant-tutorials (CC BY 4.0)"
+
+注意: このリポジトリは書籍の演習問題文・掲載数表を転載していない。演習は
+構成のみを参考にした独自問題であり、教材データは合成データ生成コードで
+再現している。CC BY 4.0 が適用されるのは本リポジトリ独自の著作物に限る。

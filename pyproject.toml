@@ -1,0 +1,27 @@
+[project]
+name = "bondlab"
+version = "0.0.1"
+description = "債券クオンツ・チュートリアルで育てる自作プライシングライブラリ"
+requires-python = ">=3.11"
+dependencies = [
+    "numpy",
+    "scipy",
+    "pandas",
+    "matplotlib",
+    "QuantLib",
+    "statsmodels",
+    "cvxpy",
+    "python-dotenv",
+    "requests",
+]
+
+[project.optional-dependencies]
+dev = ["pytest", "pytest-cov", "jupytext", "nbstripout", "ruff", "mypy"]
+app = ["fastapi", "uvicorn", "streamlit"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
