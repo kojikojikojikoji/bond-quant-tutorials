@@ -47,16 +47,22 @@ class FixedRateBond:
         self._schedule = self._build_schedule()
 
     def _build_schedule(self) -> List[_dt.date]:
-        """満期から逆算してクーポン日を刻む（月数ベースの素朴な生成）。"""
+        """満期を起点にクーポン日を刻む。
+
+        各クーポン日は満期から k・months を引いて作る（前の生成日からの反復では
+        なく満期アンカー）。こうすると月末満期でも月末が保たれ、2月などで day が
+        28 に固定されて以降ずれる問題を避けられる。
+        """
         months = 12 // self.frequency
         dates = [self.maturity]
-        d = self.maturity
-        while d > self.issue:
-            d = _add_months(d, -months)
+        k = 1
+        while True:
+            d = _add_months(self.maturity, -months * k)
+            if d <= self.issue:
+                break
             dates.append(d)
-        dates = sorted(set(dates))
-        # issue より前は落とす（逆算で1つ手前まで入るため）。
-        return [x for x in dates if x > self.issue]
+            k += 1
+        return sorted(set(dates))
 
     def cashflows(self):
         """(日付, キャッシュフロー) のリスト。最後に額面償還を足す。"""
@@ -117,6 +123,23 @@ class FixedRateBond:
     def clean_price(self, ytm: float, settlement: _dt.date) -> float:
         """clean price = dirty price − 経過利子。"""
         return self.dirty_price(ytm, settlement) - self.accrued(settlement)
+
+    def period_cashflows(self, settlement: _dt.date):
+        """決済日以降の (残存期間数 n = w+j, キャッシュフロー) を配列で返す。
+
+        割引指数 n は street convention の $w+j$。デュレーション・コンベクシティ
+        の解析計算（S3-1）に使う。年数は n / frequency。
+        """
+        import numpy as np
+
+        prev, nxt = self._surrounding(settlement)
+        if nxt is None:
+            return np.array([]), np.array([])
+        w = 1.0 - self._elapsed_fraction(prev, settlement, nxt)
+        future = [(d, c) for d, c in self.cashflows() if d > settlement]
+        n = np.array([w + j for j in range(len(future))], dtype=float)
+        cf = np.array([c for _, c in future], dtype=float)
+        return n, cf
 
     def yield_from_price(self, clean: float, settlement: _dt.date) -> float:
         """clean price から YTM を数値解法（Brent 法）で逆算する。"""

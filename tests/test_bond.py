@@ -40,6 +40,19 @@ def test_clean_and_accrued_match_quantlib_isma():
         assert abs(b.clean_price(0.025, s) - ql.BondFunctions.cleanPrice(qlb, ir, d)) < 1e-8
 
 
+def test_month_end_schedule_anchors_to_maturity():
+    # 月末満期は各クーポン日も月末に張り付く（2月は28/29、8月は31）。
+    b = FixedRateBond(dt.date(2024, 8, 31), dt.date(2027, 8, 31), 0.03, 2, "ACT/ACT")
+    for d in b._schedule:
+        if d.month == 8:
+            assert d.day == 31
+        elif d.month == 2:
+            assert d.day in (28, 29)
+    # 月央満期は月央のまま（退行しない）。
+    b2 = FixedRateBond(dt.date(2024, 6, 15), dt.date(2029, 6, 15), 0.02, 2, "ACT/ACT")
+    assert all(d.day == 15 for d in b2._schedule)
+
+
 def test_accrued_matches_isma_across_leap_boundary():
     # クーポン期間がうるう年境界（2024/2025）をまたぐ債券。
     issue, mat, cpn = dt.date(2023, 10, 15), dt.date(2029, 4, 15), 0.02
