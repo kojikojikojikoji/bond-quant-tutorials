@@ -1,5 +1,13 @@
 # S7 クレジット
 
-このフォルダに当該シリーズの notebook を置く。
-ファイル名は `nb_<シリーズ><番号>_<slug>.ipynb`（例 `nb_0504_hw_calibration.ipynb`）。
-jupytext のペア `.py`（percent 形式）も同じ場所にコミットする。
+| Notebook | テーマ |
+|---|---|
+| `nb_0701_hazard` | ハザードレートとサバイバル確率・リスキー割引 |
+| `nb_0702_cds` | CDS プライシングとハザードカーブのブートストラップ・CS01 |
+| `nb_0703_merton` | Merton 構造モデル（距離 to default・PD・KMV） |
+| `nb_0704_credit_spread` | クレジットスプレッド分析（G/I/OAS/ASW） |
+| `nb_0705_cva` | CVA 入門（オプション回・銀行XVA志望向け） |
+
+`bondlab.credit`（HazardCurve / cds_par_spread / bootstrap_hazard / Merton）を使う。
+CDS は QuantLib の CreditDefaultSwap と 0.02bp 以内で一致、ハザードブートストラップは
+往復で厳密再現する。S7-5 CVA は S5 の金利 MC と S7 のハザードを組み合わせた総合演習。
