@@ -18,6 +18,7 @@
 
 | ファイル | 分野 |
 |---|---|
+| [00_tooling.md](00_tooling.md) | 環境・データ基盤（S0） |
 | [01_bond_basics.md](01_bond_basics.md) | 債券の基礎 |
 | [02_curves.md](02_curves.md) | イールドカーブ構築 |
 | [03_risk.md](03_risk.md) | リスク指標 |
