@@ -130,6 +130,20 @@ def bootstrap_par(
     par = np.asarray(par_rates, dtype=float)
     if tenors.shape != par.shape:
         raise ValueError("tenors と par_rates は同じ長さ")
+    # この単純なブートストラップは「テナー = 等間隔のクーポン払込日」を仮定する。
+    # 非等間隔グリッド（例 0.5,1,2,3,5,7,10,20,30）を渡すと、間の払込日を無視して
+    # ゼロカーブが歪む。年次グリッドへ補間してから渡すこと。誤用を早く気づけるよう
+    # 警告する（例外にはしない。呼び出し側が意図的に近似する場合もあるため）。
+    if tenors.size >= 3:
+        steps = np.diff(tenors)
+        if not np.allclose(steps, steps[0], rtol=0.05, atol=1e-9):
+            import warnings
+            warnings.warn(
+                "bootstrap_par: テナーが等間隔でない。間のクーポン払込日を無視して"
+                "カーブが歪む可能性がある。1/frequency 刻みのグリッドへ補間してから"
+                "渡すことを推奨。",
+                stacklevel=2,
+            )
     dfs = np.empty_like(tenors)
     running = 0.0  # Σ DF over previous coupon dates
     for i, (t, c) in enumerate(zip(tenors, par)):
@@ -179,6 +193,9 @@ def fit_nss(tenors, yields, lam_grid=None):
     if lam_grid is None:
         lam_grid = np.linspace(0.5, 10.0, 20)
 
+    lam_grid = np.atleast_1d(np.asarray(lam_grid, dtype=float))
+    if lam_grid.size < 2:
+        raise ValueError("lam_grid には lam1<lam2 を作れる2点以上が必要")
     best = None
     for lam1 in lam_grid:
         for lam2 in lam_grid:
