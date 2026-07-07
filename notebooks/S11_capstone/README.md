@@ -1,5 +1,12 @@
 # S11 Capstone
 
-このフォルダに当該シリーズの notebook を置く。
-ファイル名は `nb_<シリーズ><番号>_<slug>.ipynb`（例 `nb_0504_hw_calibration.ipynb`）。
-jupytext のペア `.py`（percent 形式）も同じ場所にコミットする。
+| Notebook | テーマ |
+|---|---|
+| `nb_1101_bondlab_library` | bondlab ライブラリの整理とテスト（全層の通し実演・QuantLib突合一覧） |
+| `nb_1102_rfq_pricer` | RFQ プライサー（ミッド推定・在庫スキュー・FastAPI アプリ） |
+| `nb_1103_dashboard` | 日次カーブモニタリングダッシュボード（Streamlit アプリ） |
+
+ここまでの全層（data/rates/daycount/bond/curve/analytics/risk/sim/models/pricing/
+credit/mbs/bt）を1つのライブラリとして通しで使い、就職活動で見せられる形にまとめる。
+API リファレンスは `docs/bondlab_api.md`。アプリは `app/rfq_pricer.py`（FastAPI）と
+`app/dashboard.py`（Streamlit）。

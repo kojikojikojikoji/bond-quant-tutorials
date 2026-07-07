@@ -78,7 +78,7 @@ class DiscountCurve:
         if np.any(right):
             slope = (ys[-1] - ys[-2]) / (xs[-1] - xs[-2])
             out[right] = ys[-1] + slope * (t[right] - xs[-1])
-        return out if out.shape != () else float(out)
+        return out
 
     def zero_rate(self, t):
         """連続複利ゼロレート $z(t) = -\\ln DF(t)/t$。t>0 で定義する。
