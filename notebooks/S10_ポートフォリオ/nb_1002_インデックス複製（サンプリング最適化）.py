@@ -224,7 +224,7 @@ def build_universe(df, n_total, seed):
 raw = pd.read_csv(DATA)
 univ = build_universe(raw, n_total=300, seed=42)
 print(f"母集団 CSV: {len(raw)} 銘柄 → 合成母集団: {len(univ)} 銘柄")
-print(univ.head(3).to_string(index=False))
+display(univ.head(3))
 print("残存レンジ:", round(univ.maturity_years.min(), 2), "〜", round(univ.maturity_years.max(), 2), "年")
 
 # %% [markdown]
@@ -402,7 +402,7 @@ comp = pd.DataFrame({
     "ファクター法": krd_fac,
 })
 print(f"抽出銘柄数 n={len(sel)}")
-print(comp.to_string(index=False, float_format=lambda v: f"{v:.3f}"))
+display(comp)
 print(f"\nKRD 二乗誤差  セル法={np.sum((krd_cell-index_krd)**2):.4f}  "
       f"ファクター法={np.sum((krd_fac-index_krd)**2):.2e}")
 
@@ -500,7 +500,7 @@ rows = [
 ]
 val = pd.DataFrame(rows, columns=["手法", "インサンプルTE(bp)", "アウトオブサンプルTE(bp)"])
 val["過学習ギャップ"] = val["アウトオブサンプルTE(bp)"] - val["インサンプルTE(bp)"]
-print(val.to_string(index=False, float_format=lambda v: f"{v:.1f}"))
+display(val)
 
 # 直接あてはめはインサンプルで低く出るが、アウトで悪化するはず（過学習）。
 assert val.loc[1, "インサンプルTE(bp)"] < val.loc[0, "インサンプルTE(bp)"]
@@ -596,7 +596,7 @@ for n in [10, 30, 100]:
     })
 cmp = pd.DataFrame(rows)
 cmp["削減率(%)"] = (1 - cmp["ファクター法 TE(bp)"] / cmp["セル法 TE(bp)"]) * 100
-print(cmp.to_string(index=False, float_format=lambda v: f"{v:.1f}"))
+display(cmp)
 
 # %% [markdown]
 # ## 演習

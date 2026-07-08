@@ -238,7 +238,7 @@ z_panel = residual_zscores(resid_panel)
 print("残差パネル形状 (日付 x 銘柄):", resid_panel.shape)
 print("期間:", resid_panel.index.min().date(), "〜", resid_panel.index.max().date())
 print("\n最終営業日の残差(bp) 先頭5銘柄:")
-print(resid_panel.iloc[-1].head().round(2).to_string())
+display(resid_panel.iloc[-1].head().round(2))
 
 # %% [markdown]
 # ある1日を取り出し、フィット済みカーブと実測利回りを重ねる。カーブから上に
@@ -361,7 +361,7 @@ ranking = pd.DataFrame({
 
 cheapest5 = ranking.sort_values("z_score", ascending=False).head(5)
 print("直近営業日の cheapest 上位5銘柄 (Z スコア降順):")
-print(cheapest5.round(3).to_string())
+display(cheapest5.round(3))
 
 # %% [markdown]
 # 各 cheapest 銘柄の半減期を推定し、「収束を狙う取引妙味」を評価する。半減期が
@@ -380,7 +380,7 @@ for bond_id in cheapest5.index:
         "tstat": est["tstat"],
     })
 hl_table = pd.DataFrame(hl_rows).set_index("bond_id")
-print(hl_table.round(3).to_string())
+display(hl_table.round(3))
 
 # %% [markdown]
 # 残差の時系列を描き、cheapest 上位銘柄が平均へ戻る動きを持つかを目視する。
@@ -422,7 +422,7 @@ plt.show()
 # %%
 liq_check = cheapest5.join(universe.set_index("bond_id")["rich_cheap_bp"])
 print("cheapest 上位5と埋め込み真値の整合:")
-print(liq_check[["z_score", "resid_bp", "rich_cheap_bp"]].round(2).to_string())
+display(liq_check[["z_score", "resid_bp", "rich_cheap_bp"]].round(2))
 
 # %% [markdown]
 # ## 演習

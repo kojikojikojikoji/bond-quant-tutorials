@@ -277,7 +277,7 @@ comp = pd.DataFrame({
     "ノード単体": np.round(krd_node, 4),
     "三角バンプ(w=5)": np.round(krd_tri, 4),
 })
-print(comp.to_string(index=False))
+display(comp)
 print(f"\nノード単体 合計 = {krd_node.sum():.4f}")
 print(f"三角バンプ 合計 = {krd_tri.sum():.4f}")
 
@@ -476,7 +476,7 @@ profile = pd.DataFrame({
     "ブレットKRD": np.round(krd_bullet, 4),
     "バーベルKRD": np.round(krd_barbell, 4),
 })
-print(profile.to_string(index=False))
+display(profile)
 print(f"\nブレット KRD合計 = {krd_bullet.sum():.4f}（全体デュレーション）")
 print(f"バーベル KRD合計 = {krd_barbell.sum():.4f}（全体デュレーション）")
 
@@ -537,7 +537,7 @@ scen = pd.DataFrame({
     "バーベルPDV01": np.round(pdv01_barbell, 5),
     "バーベル寄与": np.round(-pdv01_barbell * steepener_bp, 5),
 })
-print(scen.to_string(index=False))
+display(scen)
 print(f"\nスティープナー損益  ブレット = {pnl_bullet:+.5f}")
 print(f"スティープナー損益  バーベル = {pnl_barbell:+.5f}")
 

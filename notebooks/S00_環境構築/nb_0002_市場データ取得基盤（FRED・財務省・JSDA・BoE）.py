@@ -119,7 +119,7 @@ jp10 = data.load_sample("synthetic_jp10y")   # 合成 JP 10Y
 print("US10Y 合成:", us10.index.min().date(), "〜", us10.index.max().date(), "件数", len(us10))
 print("JP10Y 合成:", jp10.index.min().date(), "〜", jp10.index.max().date(), "件数", len(jp10))
 print("\n先頭:")
-print(us10.head(3))
+display(us10.head(3))
 
 # %% [markdown]
 # ## 実データ適用：日米10年スプレッドと欠損処理
@@ -136,13 +136,13 @@ print(us10.head(3))
 # %%
 df = pd.concat({"US10Y": us10, "JP10Y": jp10}, axis=1)
 print("結合直後の欠損数:")
-print(df.isna().sum())
+display(df.isna().sum())
 
 # 両方に値がある日だけ残す。
 df = df.dropna(how="any")
 df["spread_bp"] = (df["US10Y"] - df["JP10Y"]) * 100.0   # パーセント差を bp へ
 print("\n欠損除外後の期間:", df.index.min().date(), "〜", df.index.max().date(), "件数", len(df))
-print(df[["US10Y", "JP10Y", "spread_bp"]].tail(3))
+display(df[["US10Y", "JP10Y", "spread_bp"]].tail(3))
 
 # %%
 fig, (ax1, ax2) = plt.subplots(2, 1, figsize=(10, 7), sharex=True)

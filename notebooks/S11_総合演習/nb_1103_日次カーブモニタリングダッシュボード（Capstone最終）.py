@@ -612,7 +612,7 @@ for q in [0.90, 0.95, 0.975, 0.99]:
                  "閾値|z|": round(alert_threshold(fly_z_full, q), 3)})
 far_table = pd.DataFrame(rows)
 print("バタフライ z への分位点閾値の誤報率バックテスト:")
-print(far_table.to_string(index=False))
+display(far_table)
 
 # 実測誤報率が目標(1-q)の近傍に収まることを、明示的な不変条件として守ります。
 # 標本は60日と少なく、分位点の刻みは約 1/60≒0.017 なので、離散化による
@@ -661,7 +661,7 @@ z_inj, shock_mask = inject_shocks(fly_z_full, n_shocks=8, size=2.5, seed=0)
 thr_grid = np.linspace(0.5, 3.0, 11)
 tradeoff = detection_tradeoff(z_inj, shock_mask, thr_grid)
 print("ショック注入（8日, ±2.5σ）での検出率・誤報率トレードオフ:")
-print(tradeoff.to_string(index=False))
+display(tradeoff)
 
 fig, ax = plt.subplots(figsize=(7, 5))
 ax.plot(tradeoff["誤報率"], tradeoff["検出率"], marker="o", color="tab:red")

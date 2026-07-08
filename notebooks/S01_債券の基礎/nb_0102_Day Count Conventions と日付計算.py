@@ -455,7 +455,7 @@ for d in jgb_sched:
     prev = py
 
 jgb_df = pd.DataFrame(rows)
-print(jgb_df.to_string(index=False))
+display(jgb_df)
 
 # %% [markdown]
 # 「調整」列が空でない行は、理論上の20日が休日（祝日・土日）に当たり、営業日へ
@@ -491,7 +491,7 @@ compare_df = pd.DataFrame(compare)
 # 調整規約の間で日付が食い違う行だけを表示する。
 differ = compare_df[compare_df.nunique(axis=1) > 1]
 print("休日調整規約によって利払日が変わる期のみ抜粋:")
-print(differ.to_string(index=False))
+display(differ)
 
 # %% [markdown]
 # `Unadjusted` は理論日（20日）のまま、`Following` は後ろ、`Preceding` は前へ寄せ、

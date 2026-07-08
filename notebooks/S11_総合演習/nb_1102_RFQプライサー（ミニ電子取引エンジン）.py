@@ -355,7 +355,7 @@ pricer = RFQPricer(universe, snap_yields, resid_mean_bp, daily_vol)
 
 print("評価日:", val_date, " 銘柄数:", len(snap_yields))
 print("\nプライサー内部テーブル 先頭5銘柄:")
-print(pricer.book.head().round(4).to_string())
+display(pricer.book.head().round(4))
 
 # %% [markdown]
 # 1銘柄に対して両面クォートを出してみます。bid < mid < ask になり、在庫ゼロなら
@@ -430,7 +430,7 @@ for b in snap_yields.index:
 dev_df = pd.DataFrame(rows).set_index("bond_id")
 
 print("クォートのミッド − 実勢価格 の統計（価格点）:")
-print(dev_df["dev"].describe().round(4).to_string())
+display(dev_df["dev"].describe().round(4))
 print(f"\n平均乖離 (bias): {dev_df['dev'].mean():+.4f} 点")
 print(f"乖離の RMSE     : {np.sqrt((dev_df['dev'] ** 2).mean()):.4f} 点")
 # ミッドは実勢を概ね再現し、系統的な偏りは小さいはず
@@ -475,7 +475,7 @@ comp = pd.DataFrame([
      "スプレッド幅": qb["ask"] - qb["bid"], "半スプレッド": qb["half_spread"]},
 ])
 print(f"銘柄 {target} のサイズ別クォート（在庫0）:")
-print(comp.round(4).to_string(index=False))
+display(comp.round(4))
 widen = (qb["ask"] - qb["bid"]) / (qs["ask"] - qs["bid"])
 print(f"\nスプレッド幅は 10倍サイズで {widen:.2f} 倍に拡大")
 assert (qb["ask"] - qb["bid"]) > (qs["ask"] - qs["bid"]), "大口でスプレッドが広がっていない"

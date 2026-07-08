@@ -398,7 +398,7 @@ compare["P(0,5) 再現誤差(bp)"] = (-np.log(compare["P(0,5) 解析"] / curve_d
 
 pd.set_option("display.float_format", lambda x: f"{x:,.4f}")
 print(f"市場カーブ P(0,5) = {curve_df5:.6f}\n")
-print(compare.to_string())
+display(compare)
 
 # %% [markdown]
 # 表から読み取れる**モデルリスク**の実像は次の通りです。
@@ -458,7 +458,7 @@ for tau in taus:
     vas_rows.append((tau, mine, theirs, abs(mine - theirs)))
 vas_chk = pd.DataFrame(vas_rows, columns=["τ", "bondlab", "QuantLib", "|差|"])
 print("\n[Vasicek] bondlab vs ql.Vasicek")
-print(vas_chk.to_string(index=False))
+display(vas_chk)
 assert vas_chk["|差|"].max() < 1e-8
 
 # --- CIR: ql.CoxIngersollRoss(r0, theta=b, k=a, sigma) ---
@@ -470,7 +470,7 @@ for tau in taus:
     cir_rows.append((tau, mine, theirs, abs(mine - theirs)))
 cir_chk = pd.DataFrame(cir_rows, columns=["τ", "bondlab", "QuantLib", "|差|"])
 print("\n[CIR] bondlab vs ql.CoxIngersollRoss")
-print(cir_chk.to_string(index=False))
+display(cir_chk)
 assert cir_chk["|差|"].max() < 1e-8
 
 # %% [markdown]
@@ -513,7 +513,7 @@ for (t, T) in [(1.5, 4.0), (2.5, 6.0), (4.0, 8.0)]:
 
 hw_chk = pd.DataFrame(hw_rows, columns=["t", "T", "bondlab", "QuantLib/市場", "|差|"])
 print("[Hull-White] t=0 は市場カーブ、t>0（ノード間）は ql.HullWhite と突合")
-print(hw_chk.to_string(index=False))
+display(hw_chk)
 assert hw_chk["|差|"].max() < 1e-8
 print("\n→ 3モデルとも QuantLib（および HW は市場カーブ）と一致。実装の正しさを確認")
 
@@ -545,7 +545,7 @@ for tau in err_grid:
         "HW誤差(bp)": (zh - zm) * 1e4,
     })
 err_df = pd.DataFrame(err_rows).set_index("τ(年)")
-print(err_df.to_string())
+display(err_df)
 print("\nRMSE(bp):",
       f"Vasicek={np.sqrt(np.mean(err_df['Vasicek誤差(bp)']**2)):.2f},",
       f"CIR={np.sqrt(np.mean(err_df['CIR誤差(bp)']**2)):.2f},",
@@ -595,7 +595,7 @@ neg_tbl = pd.DataFrame({
     "CIR(%)": [neg_rate_prob(specs["CIR"], T) * 100 for T in horizons],
     "HW(%)": [neg_rate_prob(specs["HW"], T) * 100 for T in horizons],
 }).set_index("T(年)")
-print(neg_tbl.to_string())
+display(neg_tbl)
 
 # %% [markdown]
 # 同じカーブに合わせても、HW は市場の低い短期フォワードを継承し、かつ平均回帰が緩いため、

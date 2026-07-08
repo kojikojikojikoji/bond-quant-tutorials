@@ -379,7 +379,7 @@ table = pd.DataFrame({
 }, index=model["ids"])
 krd_df = pd.DataFrame(model["krd"], index=model["ids"], columns=krd_cols)
 show = pd.concat([table, krd_df], axis=1)
-print(show.iloc[[0, 10, 20, 30, 39]].round(3).to_string())
+display(show.iloc[[0, 10, 20, 30, 39]].round(3))
 
 # %% [markdown]
 # 代表銘柄の KRD プロファイルを描きます。満期の異なる3銘柄で、感応度がどの
@@ -481,7 +481,7 @@ bind = pd.DataFrame({
     ]),
 })
 bind["バインド"] = bind["スラック"].abs() < 1e-5
-print(bind.round(5).to_string(index=False))
+display(bind.round(5))
 
 # 相補スラック：バインドしていない制約の双対はほぼゼロ。
 non_binding = bind.loc[~bind["バインド"], "双対値"].abs().max()
@@ -563,9 +563,9 @@ detail = pd.DataFrame({
     "アクティブ%": active * 100,
 }, index=model["ids"])
 print("=== 買い増し上位5 ===")
-print(detail.sort_values("アクティブ%", ascending=False).head(5).round(3).to_string())
+display(detail.sort_values("アクティブ%", ascending=False).head(5).round(3))
 print("\n=== 削減上位5 ===")
-print(detail.sort_values("アクティブ%").head(5).round(3).to_string())
+display(detail.sort_values("アクティブ%").head(5).round(3))
 
 # %% [markdown]
 # ### 最適解の直感的な説明

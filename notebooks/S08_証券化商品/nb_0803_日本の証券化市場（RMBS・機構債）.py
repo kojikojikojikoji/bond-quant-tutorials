@@ -257,7 +257,7 @@ disc = pd.DataFrame(
         "cpr_observed": cpr_obs,
     }
 )
-print(disc.head())
+display(disc.head())
 print(f"\n観測CPRの平均: {cpr_obs.mean():.4f} / 最大: {cpr_obs.max():.4f}")
 print(f"インセンティブ範囲: [{incentive_path.min():+.4f}, {incentive_path.max():+.4f}]")
 
@@ -446,7 +446,7 @@ for name, pred in [
 fit_table = pd.DataFrame(rows)
 print(f"実績CPRの平均: {cpr_obs.mean():.4f}")
 print(f"当てはめたPSA倍率: {psa_hat:.0f} (PSA表記)")
-print(fit_table.to_string(index=False))
+display(fit_table)
 
 # %% [markdown]
 # 残差と予測を可視化します。米国式は、インセンティブが正に振れる局面で

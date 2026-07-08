@@ -523,7 +523,7 @@ for name, iss, mat, cpn, mkt_clean in universe:
     })
 
 result = pd.DataFrame(rows)
-print(result.to_string(index=False))
+display(result)
 
 # scratch と bondlab の YTM が一致することを確認。
 for r in rows:

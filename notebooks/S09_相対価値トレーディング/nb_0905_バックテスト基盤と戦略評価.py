@@ -378,7 +378,7 @@ for lag in (0, 1):
         "ann_return": perf["ann_return"],
     })
 cheat = pd.DataFrame(cheat_rows).set_index("lag")
-print(cheat.to_string(float_format=lambda v: f"{v:.4f}"))
+display(cheat)
 print(f"\n覗き見(lag=0)は正しい評価(lag=1)よりシャープが "
       f"{cheat.loc[0, 'sharpe'] - cheat.loc[1, 'sharpe']:+.1f} 過大")
 assert cheat.loc[0, "sharpe"] > cheat.loc[1, "sharpe"] + 5.0
@@ -409,7 +409,7 @@ def compare_lag(signals, returns, cost_bps=0.0):
 
 
 look = compare_lag(sig_rv, ret_rv, cost_bps=0.0)
-print(look.to_string(float_format=lambda v: f"{v:.4f}"))
+display(look)
 
 sharpe_gap = look.loc[1, "sharpe"] - look.loc[0, "sharpe"]
 print(f"\n正しい lag=1 と誤り lag=0 のシャープ差: {sharpe_gap:+.2f}")
@@ -464,7 +464,7 @@ for name, s, r in [
     })
 report = pd.DataFrame(report_rows).set_index("戦略")
 print("\n=== 戦略別パフォーマンス（コスト0.5bp, lag=1）===")
-print(report.to_string(float_format=lambda v: f"{v:.4f}"))
+display(report)
 
 # %% [markdown]
 # ### コスト感応度分析
@@ -480,7 +480,7 @@ for c in cost_grid:
     perf = bt.performance(res["pnl"])
     sens_rows.append({"cost_bps": c, "sharpe": perf["sharpe"], "ann_return": perf["ann_return"]})
 sens = pd.DataFrame(sens_rows).set_index("cost_bps")
-print(sens.to_string(float_format=lambda v: f"{v:.4f}"))
+display(sens)
 
 # 損益分岐コスト（シャープが0を割る手前のコスト）を報告する。
 positive = sens[sens["sharpe"] > 0]

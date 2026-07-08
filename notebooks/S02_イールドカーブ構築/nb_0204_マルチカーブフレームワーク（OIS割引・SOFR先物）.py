@@ -498,7 +498,7 @@ for tenor in [2, 5, 10]:
     })
 
 diff_table = pd.DataFrame(rows)
-print(diff_table.to_string(index=False))
+display(diff_table)
 
 # %% [markdown]
 # 割引カーブがOIS（低め）かスワップ（高め）かで、同じキャッシュフローの現在

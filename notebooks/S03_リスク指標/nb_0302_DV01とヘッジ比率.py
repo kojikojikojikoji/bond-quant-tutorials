@@ -366,7 +366,7 @@ cmp_tbl = pd.DataFrame({
     "modified": [round(dc_exact["modified"], 8), np.nan, round(ql_moddur, 8)],
     "DV01": [round(dv01_analytic, 10), round(dv01_numeric, 10), round(dv01_quantlib, 10)],
 })
-print(cmp_tbl.to_string(index=False))
+display(cmp_tbl)
 
 # バンプ再評価は1bpの中心差分なので、打ち切り誤差の分だけ緩めに判定する。
 assert abs(dv01_numeric - dv01_analytic) < 1e-6
@@ -405,7 +405,7 @@ day0 = dates[dates.index(day1) - 1]
 shift_bp = (wide.loc[day1] - wide.loc[day0]) * 1e4
 print(f"基準日(前日): {day0}   シフト日: {day1}")
 print("年限別の利回り変化 (bp):")
-print(shift_bp.round(3).to_string())
+display(shift_bp.round(3))
 print(f"\n2s10s30s バタフライ変化: {butterfly.loc[day1] * 1e4:.2f} bp（非平行の度合い）")
 
 # %% [markdown]
@@ -447,7 +447,7 @@ FACE10 = 10_000_000.0
 # ヘッジ前（10年ロングのみ）。
 pre_total, pre_tbl = portfolio_dv01([("10年ロング", bond10, y10_0, FACE10)], settle_d)
 print("=== ヘッジ前ポートフォリオ ===")
-print(pre_tbl.to_string(index=False))
+display(pre_tbl)
 print(f"合計DV01: {pre_total:,.2f}\n")
 
 # 2年+30年で水準・傾き中立のヘッジ面額を解く（基準年限=10）。
@@ -467,7 +467,7 @@ positions = [
 ]
 post_total, post_tbl = portfolio_dv01(positions, settle_d)
 print("\n=== ヘッジ後ポートフォリオ ===")
-print(post_tbl.to_string(index=False))
+display(post_tbl)
 print(f"合計DV01: {post_total:,.6f}（≒0 なら水準中立）")
 
 assert abs(post_total) < 1e-6
@@ -522,7 +522,7 @@ decomp = pd.DataFrame({
     "PnL": [level_pnl, slope_pnl, curv_pnl, linear_sum, pnl_hedged, pnl_hedged - linear_sum],
 })
 print("\n=== ヘッジ後PnLの要因分解 ===")
-print(decomp.to_string(index=False, formatters={"PnL": "{:,.2f}".format}))
+display(decomp)
 
 # %% [markdown]
 # 水準項と傾き項はほぼゼロ（2本のヘッジで消したため）で、残存PnLの大半は曲率項が

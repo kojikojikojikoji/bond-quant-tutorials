@@ -329,7 +329,7 @@ for name, f in firms.items():
     })
 
 df = pd.DataFrame(rows).set_index("企業")
-print(df.T.to_string())
+display(df.T)
 
 # 格付との整合: 高格付ほど DD が大きく PD が小さいはず
 dd_a = df.loc[df.index[0], "DD"]

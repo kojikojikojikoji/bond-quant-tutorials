@@ -325,7 +325,7 @@ recover = pd.DataFrame(
     index=["alpha", "rho", "nu"],
 )
 recover["絶対誤差"] = (recover["復元値"] - recover["真値"]).abs()
-print(recover.to_string(float_format=lambda x: f"{x:.6f}"))
+display(recover)
 print(f"\nフィット RMSE = {rmse_bp:.4f} bp")
 assert rmse_bp < 1e-2
 assert np.allclose([alpha_hat, rho_hat, nu_hat], [alpha_t, rho_t, nu_t], atol=1e-4)
@@ -404,7 +404,7 @@ for e in expiries:
                      "ATMボラ(%)": my_sabr_vol(fwd, fwd, e, a, b, r, n) * 100})
 
 cube_df = pd.DataFrame(rows)
-print(cube_df.to_string(index=False, float_format=lambda x: f"{x:.4f}"))
+display(cube_df)
 
 # %%
 fig, axes = plt.subplots(1, 3, figsize=(15, 4.5), sharey=False)

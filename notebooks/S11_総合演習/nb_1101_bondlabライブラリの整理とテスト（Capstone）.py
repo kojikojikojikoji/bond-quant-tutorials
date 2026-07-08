@@ -475,7 +475,7 @@ report["絶対差"] = (report["bondlab"] - report["QuantLib"]).abs()
 report["判定"] = np.where(report["絶対差"] < 1e-8, "機械精度一致", "bp精度一致")
 # 見やすさのため有効桁を整える（表示のみ）。
 with pd.option_context("display.float_format", lambda v: f"{v:.10g}"):
-    print(report.to_string(index=False))
+    display(report)
 print(f"\n最大絶対差（CDS を除く）= {report.iloc[:-1]['絶対差'].max():.2e}")
 
 # %% [markdown]

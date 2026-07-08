@@ -411,7 +411,7 @@ wide = panel.pivot(index="date", columns="tenor", values="par_yield").sort_index
 panel_tenors = wide.columns.values.astype(float)
 print("パネル形状:", wide.shape, "（営業日 × 年限）")
 print("年限:", panel_tenors)
-print(wide.iloc[:3].round(5))
+display(wide.iloc[:3].round(5))
 
 # %% [markdown]
 # パネル全体を日次で回します。60日 × 20×20 格子は無駄に重いので、格子は
@@ -439,9 +439,9 @@ for date, row in wide.iterrows():
 
 betas = pd.DataFrame(records).set_index("date")
 betas.index = pd.to_datetime(betas.index)
-print(betas.head().round(5))
+display(betas.head().round(5))
 print("...")
-print(betas.tail().round(5))
+display(betas.tail().round(5))
 
 # %% [markdown]
 # フィット品質を1点で確認します。ある日の当てはめ曲線を観測パー利回りに
@@ -503,7 +503,7 @@ corr = pd.DataFrame({
     "スロープ": [np.corrcoef(betas["スロープ(-β1)"], proxy["スロープ代理"])[0, 1]],
     "曲率": [np.corrcoef(betas["曲率(β2)"], proxy["曲率代理"])[0, 1]],
 }, index=["因子と代理量の相関"])
-print(corr.round(4).to_string())
+display(corr.round(4))
 
 # %% [markdown]
 # レベルとスロープは代理量とほぼ完全に連動し（相関 ≈ 1）、因子が素直に

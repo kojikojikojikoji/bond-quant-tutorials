@@ -180,7 +180,7 @@ table = pd.DataFrame({
     "割引係数": np.round(dfs, 6),
     "ゼロレート%": np.round(-np.log(dfs) / grid * 100, 4),
 })
-print(table.to_string(index=False))
+display(table)
 
 # %% [markdown]
 # 剥ぎ取った割引係数で、入力パー債が価格1に戻るかを直接検算する。ブートストラップの
@@ -226,7 +226,7 @@ three = pd.DataFrame({
     "パー%": np.round(par_curve * 100, 4),
     "1年ﾌｫﾜｰﾄﾞ%": np.round(fwd_1y * 100, 4),
 })
-print(three.to_string(index=False))
+display(three)
 
 # %% [markdown]
 # ### デポジット＋債券の混在入力への拡張
@@ -273,7 +273,7 @@ mix = pd.DataFrame({
     "種別": ["デポ"] * len(deposits) + ["債券"] * len(bonds),
     "割引係数": np.round(md, 6),
 })
-print(mix.to_string(index=False))
+display(mix)
 
 # デポ区間の割引係数が単利の定義と一致することを確認する。
 assert abs(md[0] - 1.0 / (1.0 + 0.028 * 0.5)) < 1e-15
@@ -333,7 +333,7 @@ for t in interior:
     rows.append({"t(年)": t, "bondlab DF": round(a, 10), "QuantLib DF": round(b, 10),
                  "差": f"{abs(a - b):.2e}"})
 interp_tbl = pd.DataFrame(rows)
-print(interp_tbl.to_string(index=False))
+display(interp_tbl)
 
 interior_diff = max(abs(curve.discount(t) - ql_curve.discount(float(t))) for t in interior)
 assert interior_diff < 1e-12
@@ -397,7 +397,7 @@ print(f"実日付ノードでのスクラッチとの最大差（閏日ノイズ
 
 # %%
 sample = pd.read_csv("data/samples/synthetic_ust_par_curve.csv")
-print(sample.to_string(index=False))
+display(sample)
 
 annual_grid = np.arange(1.0, 31.0)
 par_annual = np.interp(annual_grid, sample["tenor"].to_numpy(), sample["par_yield"].to_numpy())

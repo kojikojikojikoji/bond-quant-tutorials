@@ -450,7 +450,7 @@ for n in n_grid:
     conv.append((int(n), res["mean"], res["stderr"], res["ci_low"], res["ci_high"]))
 conv_df = pd.DataFrame(conv, columns=["n", "MC価格", "標準誤差", "CI下限", "CI上限"])
 conv_df["真値との差"] = conv_df["MC価格"] - BS_TRUE
-print(conv_df.round(5).to_string(index=False))
+display(conv_df.round(5))
 
 # %%
 fig, ax = plt.subplots(figsize=(9, 5))

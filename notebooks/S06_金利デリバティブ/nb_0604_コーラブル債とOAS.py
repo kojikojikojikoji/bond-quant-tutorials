@@ -578,7 +578,7 @@ decomp = pd.DataFrame({
     "割安と仮定 (bp)": [zspr * 1e4, oas * 1e4, opt_cost * 1e4],
     "フェア価格 (bp)": [z_fair * 1e4, oas_fair * 1e4, (z_fair - oas_fair) * 1e4],
 })
-print(decomp.to_string(index=False, float_format=lambda x: f"{x:.1f}"))
+display(decomp)
 
 assert opt_cost > 0                                 # コーラブルはオプションコスト正
 assert abs(oas_fair) < 5.0                          # フェアなら OAS≈0（<5bp）

@@ -336,7 +336,7 @@ curve_disp["DF"] = curve_disp["DF"].map(lambda x: f"{x:.6f}")
 for conv in conventions:
     curve_disp[conv] = curve_disp[conv].map(lambda x: f"{x:.4f}")
 print("割引係数カーブと規約別ゼロレート（%）")
-print(curve_disp.to_string(index=False))
+display(curve_disp)
 
 # %% [markdown]
 # 割引係数はどの規約でも同一で、表示レートだけが規約により変わります。複利回数が

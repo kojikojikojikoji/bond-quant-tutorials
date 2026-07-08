@@ -187,7 +187,7 @@ print("期間:", panel.index.min().date(), "〜", panel.index.max().date())
 print("テナー(年):", [float(t) for t in TENORS])
 print("欠損セル数:", int(panel.isna().sum().sum()))
 print("\n先頭3日（パー利回り, %表示）:")
-print((panel.head(3) * 100).round(3))
+display((panel.head(3) * 100).round(3))
 
 # %% [markdown]
 # ### インプット検証と外れ値検出
@@ -400,7 +400,7 @@ detail = pd.DataFrame({
     "パー債価格": prices0.round(10),
 })
 print(f"サンプル日: {sample_date.date()}")
-print(detail.to_string(index=False))
+display(detail)
 print(f"\nパー債価格の最大誤差: {np.max(np.abs(prices0 - 1.0)):.2e}")
 
 # %% [markdown]
@@ -431,7 +431,7 @@ if not flags.empty:
     show["date"] = show["date"].dt.date
     show["change_bp"] = show["change_bp"].round(2)
     show["zscore"] = show["zscore"].round(2)
-    print(show.to_string(index=False))
+    display(show)
 
 # %% [markdown]
 # ### ゼロレート曲面のヒートマップ

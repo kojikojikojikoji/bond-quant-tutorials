@@ -256,7 +256,7 @@ print("検証1 OK: クーポン6%で簡易版CF=1、厳密版CF≈1")
 universe = pd.read_csv("data/samples/synthetic_jgb_universe.csv")
 basket = universe[(universe.maturity_years >= 7.0) & (universe.maturity_years <= 11.0)].reset_index(drop=True)
 print("受渡適格バスケット（残存7〜11年）:")
-print(basket.to_string(index=False))
+display(basket)
 
 # パー利回りカーブ（低金利の右肩上がり）を組み、ブートストラップで割引カーブを作る。
 tenors = np.arange(1, 21).astype(float)

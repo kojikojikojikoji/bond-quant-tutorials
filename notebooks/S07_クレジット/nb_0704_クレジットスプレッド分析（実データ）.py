@@ -415,7 +415,7 @@ hy_oas = np.clip(350 + 1650 * stress + ar1_noise(45.0), 260, None)
 
 spreads = pd.DataFrame({"IG": ig_oas, "HY": hy_oas}, index=months)
 print("生成した合成スプレッド（bp）の要約統計:")
-print(spreads.describe().round(0))
+display(spreads.describe().round(0))
 
 # %%
 fig, ax = plt.subplots(2, 1, figsize=(8, 6), sharex=True)

@@ -303,7 +303,7 @@ check = pd.DataFrame({
         "OK" if 0.95 <= cum3 <= 0.9999 else "NG",
     ],
 })
-print(check.to_string(index=False))
+display(check)
 
 # %% [markdown]
 # ## 実データ適用
@@ -319,7 +319,7 @@ par_wide = panel.pivot(index="date", columns="tenor", values="par_yield").sort_i
 report_tenors = par_wide.columns.to_numpy(dtype=float)
 print("パネル形状 (日 × テナー):", par_wide.shape)
 print("テナー:", report_tenors)
-print(par_wide.iloc[:3].round(5))
+display(par_wide.iloc[:3].round(5))
 
 # %% [markdown]
 # ### 日次カーブの構築とゼロレートパネル
@@ -384,7 +384,7 @@ print(f"第1〜3主成分の累積寄与率 : {cum3_real:.4f}")
 factor_table = pd.DataFrame(loads, index=report_tenors, columns=["PC1", "PC2", "PC3"])
 factor_table.index.name = "テナー"
 print("\n主成分の負荷ベクトル:")
-print(factor_table.round(3).to_string())
+display(factor_table.round(3))
 
 # 因子の同定: PC1=ほぼ同符号(レベル), PC2=単調符号反転(スロープ), PC3=山谷(曲率)。
 pc1_same_sign = np.all(np.sign(loads[:, 0]) == np.sign(loads[0, 0]))
@@ -507,7 +507,7 @@ pnl_rows.append((f"ヒストリカル最悪日 (#{worst_day})", hist_pnls[worst_
 
 pnl_df = pd.DataFrame(pnl_rows, columns=["シナリオ", "損益"]).sort_values("損益")
 pnl_df["損益(bp of PV)"] = pnl_df["損益"] / base_value * 1e4
-print(pnl_df.round(4).to_string(index=False))
+display(pnl_df.round(4))
 print(f"\nワースト損失: {pnl_df['損益'].min():,.4f}  （シナリオ: {pnl_df.iloc[0]['シナリオ']}）")
 
 # %% [markdown]

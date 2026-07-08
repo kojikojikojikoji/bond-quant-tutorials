@@ -411,7 +411,7 @@ port = pd.DataFrame({
 })
 port = port.sort_values("maturity_years")
 print("免疫化ポートフォリオ（保有銘柄）:")
-print(port.round(3).to_string(index=False))
+display(port.round(3))
 
 A_pv = float(w @ fair["price"])
 A_dur = float((w * fair["price"] * fair["dur"]).sum() / A_pv)
@@ -546,7 +546,7 @@ krd_tbl = pd.DataFrame({
     "mismatch": krd_a - krd_l,
 })
 print("キーレートデュレーション（ドル額, カーブ評価）:")
-print(krd_tbl.round(2).to_string(index=False))
+display(krd_tbl.round(2))
 print("\n資産は短期(2y)・長期(30y)に感応度が張り出すバーベル型、")
 print("負債は中盤(5〜20y)に厚いブレット型。ミスマッチベクトルがツイストの入口になる。")
 

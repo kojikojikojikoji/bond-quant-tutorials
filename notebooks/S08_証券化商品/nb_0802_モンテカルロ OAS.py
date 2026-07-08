@@ -491,7 +491,7 @@ table = pd.DataFrame({
     "σ = 2.0%（2倍）": [res_hi["oas"] * 1e4, res_hi["zspread"] * 1e4,
                         res_hi["option_cost"] * 1e4],
 }, index=["OAS (bp)", "Zスプレッド (bp)", "オプションコスト (bp)"])
-print(table.round(1).to_string())
+display(table.round(1))
 
 # %% [markdown]
 # **読み取り。** Zスプレッドはボラに依らずほぼ一定です（確定シナリオの CF を市場カーブで
