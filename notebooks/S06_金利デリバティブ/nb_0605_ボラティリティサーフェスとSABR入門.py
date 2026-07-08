@@ -153,6 +153,11 @@
 # **正規（Bachelier）SABR** を使い、負の行使を許します。本 notebook では素の Hagan
 # 対数正規版を扱い、壊れる様子を密度で可視化します。
 
+
+# %% [markdown]
+# **数値例**：ATM 式 $\sigma_{\text{ATM}}=\dfrac{\alpha}{F^{1-\beta}}\bigl[1+A\,T\bigr]$ に $\alpha=0.02,\ \beta=0.5,\ F=3.0\%,\ T=5,\ \rho=-0.3,\ \nu=0.4$ を入れると、$\dfrac{\alpha}{F^{1-\beta}}=\dfrac{0.02}{\sqrt{0.03}}=0.1155$、補正 $A=0.00994$ で $\sigma_{\text{ATM}}=0.1155\times(1+0.00994\times5)=0.1212=12.12\%$ です。
+#
+# **数値例**：同じパラメータで行使 $K=2.0\%$（ITM 側）のインプライドボラは $\sigma_{\text{impl}}=17.63\%$ と ATM の $12.12\%$ より高く、$\rho<0$ による右下がりのスキューが数値で現れます。
 # %% [markdown]
 # ## スクラッチ実装
 #

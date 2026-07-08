@@ -430,6 +430,9 @@ print("金利モデル: Vasicek ZCB が QuantLib と一致（< 1e-10）、Hull-W
 # アニュイティ測度下のスワップション価格 = アニュイティ × Black'76。QuantLib の
 # `blackFormula` と突合する。
 
+
+# %% [markdown]
+# **数値例**：フォワードスワップレート $F=3.50\%$、ストライク $K=F$（ATM）、ボラ $\sigma=24\%$、満期 $\tau=5$ 年、アニュイティ $A=4.20$ とすると、$\sigma\sqrt{\tau}=0.537$ より Black'76 の単位アニュイティ価格は $F\big(2N(0.268)-1\big)=0.00740$、スワップション価格は $A\times0.00740=0.0311$ です。ATM ではペイヤーとレシーバーが一致します。
 # %%
 ql_black = annuity * ql.blackFormula(ql.Option.Call, strike, fwd_swap, vol * np.sqrt(expiry))
 swaption_rows = [("ペイヤースワップション", payer, ql_black)]

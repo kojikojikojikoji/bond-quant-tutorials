@@ -159,6 +159,15 @@
 # ことの略記である。伊藤の公式で $\tfrac12 f''(W)\,dt$ の項が現れるのはこの効果に
 # よる（S4-2 以降で使う）。
 
+
+
+
+# %% [markdown]
+# **数値例**（共分散）：$s=0.5$、$t=2$ のとき $\operatorname{Cov}(W_s,W_t)=\min(s,t)=0.5$ です。相関は $\operatorname{Corr}(W_s,W_t)=\min(s,t)/\sqrt{st}=0.5/\sqrt{1}=0.5$ となります。
+# %% [markdown]
+# **数値例**（2次変分のばらつき）：$t=1$ で $[0,1]$ を $m=200$ 等分すると、$\operatorname{Var}\big[[W]^{(m)}_t\big]=2t^2/m=2/200=0.01$、標準偏差は $\sqrt{0.01}=0.1$ です。$m=50$ なら分散 $0.04$・標準偏差 $0.2$ で、分割を4倍細かくすると標準偏差は半分になります。
+# %% [markdown]
+# **数値例**（1次変分の発散）：$T=1$、$\Delta t=1/100$ とすると、増分1つの平均は $\mathbb{E}\lvert\Delta W_i\rvert=\sqrt{2\Delta t/\pi}=\sqrt{0.02/\pi}\approx0.0798$、全体では $\mathbb{E}[V^{(1)}_n]=\sqrt{2/\pi}\,\cdot\,T/\sqrt{\Delta t}=\sqrt{2/\pi}\cdot10\approx7.98$ です。刻みを $\Delta t=1/400$ に細かくすると $\sqrt{2/\pi}\cdot20\approx15.96$ と倍増し、発散へ向かいます。
 # %% [markdown]
 # ## スクラッチ実装
 #

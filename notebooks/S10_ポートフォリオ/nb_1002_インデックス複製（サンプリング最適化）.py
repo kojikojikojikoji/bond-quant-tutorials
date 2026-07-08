@@ -118,6 +118,12 @@
 # $n$ に対しておよそ $1/\sqrt{n}$ で逓減します。トラッキングエラーは通常、年率
 # ベーシスポイントで表示します（$\mathrm{TE}_{\text{年率}} = \mathrm{TE}_{\text{日次}}\sqrt{252}$）。
 
+
+
+# %% [markdown]
+# **数値例**：KRDを一致させて $\Delta k\to0$ とすれば第1項が消え、$\mathrm{TE}$ は個別リスク項だけになります。日次 $\mathrm{TE}=1.5\text{bp}$ なら、年率は $\mathrm{TE}_{\text{年率}}=1.5\times\sqrt{252}=23.8\text{bp}$ です。
+# %% [markdown]
+# **数値例**：ある銘柄（$P=100$）の10年キーレートだけを $\pm1\text{bp}$（$\delta=10^{-4}$）動かし、$P(z+\delta e_k)=99.930$・$P(z-\delta e_k)=100.070$ が得られたとします。すると $\mathrm{KRD}_{10}=-\dfrac{99.930-100.070}{2\times10^{-4}\times100}=7.0$（年）です。
 # %% [markdown]
 # ## スクラッチ実装
 #
@@ -546,6 +552,9 @@ te_curve = np.array(te_curve)
 # 第2項（個別リスク）が $\sum_i (x_i-w_i)^2\sigma_i^2 \sim 1/n$ に従うためです。
 # 実務では「これ以上増やしても TE がほとんど減らない」肩の位置を妥協点にします。
 
+
+# %% [markdown]
+# **数値例**：個別リスク項は $\sum_i(x_i-w_i)^2\sigma_i^2\sim1/n$ なので $\mathrm{TE}\propto1/\sqrt{n}$ です。$n=10$ で $32\text{bp}$ なら、$n=40$ で $32\times\sqrt{10/40}=16\text{bp}$、$n=90$ で $32\times\sqrt{10/90}=10.7\text{bp}$ となり、銘柄数を4倍にして半減、9倍にして約1/3にしか減りません。
 # %%
 key_ns = {10: None, 30: None, 100: None}
 for n, te in zip(n_grid, te_curve):

@@ -93,6 +93,11 @@
 # | `rate_from_discount(df, t, convention)` | 割引係数, 年数, 複利規約 | レート | 割引係数→レート（逆関数） |
 # | `to_continuous(rate, convention)` | レート, 複利規約 | 連続複利レート | 離散→連続（t 非依存） |
 
+
+# %% [markdown]
+# **数値例**：半年複利 5%・3年の割引係数は $DF = \left(1 + \dfrac{0.05}{2}\right)^{-2 \times 3} = 0.86229687$ です。
+#
+# 等価な連続複利レートは $r_c = 2 \ln\left(1 + \dfrac{0.05}{2}\right) = 0.049385$（約 4.9385%）となり、これを使うと $e^{-0.049385 \times 3} = 0.86229687$ で、同じ割引係数に一致します。
 # %%
 import numpy as np
 

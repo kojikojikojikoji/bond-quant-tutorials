@@ -153,6 +153,11 @@
 # CVA の対称形として、自社の破綻を織り込む DVA（debit valuation adjustment、$\mathrm{ENE}$ 側）、資金調達コストの
 # FVA、資本コストの KVA などがあり、これらを総称して XVA と呼びます。本 notebook は CVA に絞ります。
 
+
+# %% [markdown]
+# **数値例**：フラットハザードは $\lambda=s/(1-R)$。信用スプレッド $s=100$bp、$R=0.4$ なら $\lambda=0.01/0.6\approx 0.0167$（167bp）で、1年目の限界デフォルト確率は $S(0)-S(1)=1-e^{-0.0167}\approx 0.0165$ です。
+#
+# **数値例**：ある年 $t_k$ で $\mathrm{EE}(t_k)=50$bp、$\mathrm{DF}(t_k)=0.97$、限界PD $S(t_{k-1})-S(t_k)=0.0165$ なら、その年の CVA 寄与は $(1-R)\,\mathrm{EE}\,\mathrm{DF}\,\Delta\mathrm{PD}=0.6\times 0.005\times 0.97\times 0.0165\approx 0.48$bp（想定元本比）です。これを全期間で足し上げたものが CVA になります。
 # %% [markdown]
 # ## スクラッチ実装
 #
