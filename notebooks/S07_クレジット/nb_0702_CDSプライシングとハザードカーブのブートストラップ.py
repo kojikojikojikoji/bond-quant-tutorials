@@ -182,7 +182,11 @@
 # %%
 import numpy as np
 import matplotlib.pyplot as plt
-plt.rcParams["font.family"] = ["Hiragino Sans", "Yu Gothic", "Meiryo", "IPAexGothic", "Noto Sans CJK JP", "Arial Unicode MS", "DejaVu Sans"]
+import matplotlib.font_manager as _fm
+for _f in ["Hiragino Sans", "Yu Gothic", "Meiryo", "IPAexGothic", "Noto Sans CJK JP", "Noto Sans JP", "TakaoPGothic", "IPAPGothic"]:
+    if any(_f == _n.name for _n in _fm.fontManager.ttflist):
+        plt.rcParams["font.family"] = _f
+        break
 plt.rcParams["axes.unicode_minus"] = False
 from scipy.optimize import brentq
 
@@ -527,8 +531,8 @@ plt.show()
 #
 # | 用語 | 英語 | 一行定義 |
 # |---|---|---|
-# | CDS | credit default swap | 参照企業のデフォルトに備える保険。保険料と損失補填を交換する |
-# | プロテクションレッグ | protection leg | デフォルト時に売り手が払う $N(1-R)$ の現在価値 |
-# | パースプレッド | par spread | 契約価値をゼロにするスプレッド。プロテクション PV / リスキーアニュイティ |
-# | アップフロント | upfront | 固定クーポンと市場スプレッドの差を調整する契約時の一括授受 |
-# | CS01 | credit DV01 | CDS スプレッドが 1bp 動いたときの時価変化額 |
+# | [CDS](../../glossary/07_credit.md#credit-default-swap) | credit default swap | 参照企業のデフォルトに備える保険。保険料と損失補填を交換する |
+# | [プロテクションレッグ](../../glossary/07_credit.md#protection-leg) | protection leg | デフォルト時に売り手が払う $N(1-R)$ の現在価値 |
+# | [パースプレッド](../../glossary/07_credit.md#par-spread) | par spread | 契約価値をゼロにするスプレッド。プロテクション PV / リスキーアニュイティ |
+# | [アップフロント](../../glossary/07_credit.md#upfront) | upfront | 固定クーポンと市場スプレッドの差を調整する契約時の一括授受 |
+# | [CS01](../../glossary/07_credit.md#credit-dv01) | credit DV01 | CDS スプレッドが 1bp 動いたときの時価変化額 |

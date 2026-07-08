@@ -81,7 +81,11 @@ import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 
-plt.rcParams["font.family"] = ["Hiragino Sans", "Yu Gothic", "Meiryo", "IPAexGothic", "Noto Sans CJK JP", "Arial Unicode MS", "DejaVu Sans"]
+import matplotlib.font_manager as _fm
+for _f in ["Hiragino Sans", "Yu Gothic", "Meiryo", "IPAexGothic", "Noto Sans CJK JP", "Noto Sans JP", "TakaoPGothic", "IPAPGothic"]:
+    if any(_f == _n.name for _n in _fm.fontManager.ttflist):
+        plt.rcParams["font.family"] = _f
+        break
 plt.rcParams["axes.unicode_minus"] = False
 from bondlab import data
 
@@ -193,8 +197,8 @@ plt.show()
 #
 # | 用語 | 英語 | 一行定義 |
 # |---|---|---|
-# | パー利回り | par yield | その年限の標準クーポン債が額面で取引される利回り。カーブ構築の入力 |
-# | CMT | constant maturity treasury | 一定年限に補間した米国債利回り。FRED の DGS 系列 |
-# | 売買参考統計値 | JSDA reference prices | JSDA が公表する銘柄別の平均値単価・利回り |
-# | ベンチマーク銘柄 | benchmark issue | 各年限の代表銘柄。直近発行の流動性が高い銘柄が多い |
-# | API キー | API key | 外部サービス認証用の秘密情報。`.env` で管理しコードに書かない |
+# | [パー利回り](../../glossary/00_tooling.md#par-yield) | par yield | その年限の標準クーポン債が額面で取引される利回り。カーブ構築の入力 |
+# | [CMT](../../glossary/00_tooling.md#constant-maturity-treasury) | constant maturity treasury | 一定年限に補間した米国債利回り。FRED の DGS 系列 |
+# | [売買参考統計値](../../glossary/00_tooling.md#jsda-reference-prices) | JSDA reference prices | JSDA が公表する銘柄別の平均値単価・利回り |
+# | [ベンチマーク銘柄](../../glossary/00_tooling.md#benchmark-issue) | benchmark issue | 各年限の代表銘柄。直近発行の流動性が高い銘柄が多い |
+# | [API キー](../../glossary/00_tooling.md#api-key) | API key | 外部サービス認証用の秘密情報。`.env` で管理しコードに書かない |

@@ -191,7 +191,11 @@ import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 
-plt.rcParams["font.family"] = ["Hiragino Sans", "Yu Gothic", "Meiryo", "IPAexGothic", "Noto Sans CJK JP", "Arial Unicode MS", "DejaVu Sans"]
+import matplotlib.font_manager as _fm
+for _f in ["Hiragino Sans", "Yu Gothic", "Meiryo", "IPAexGothic", "Noto Sans CJK JP", "Noto Sans JP", "TakaoPGothic", "IPAPGothic"]:
+    if any(_f == _n.name for _n in _fm.fontManager.ttflist):
+        plt.rcParams["font.family"] = _f
+        break
 plt.rcParams["axes.unicode_minus"] = False
 from bondlab.curve import bootstrap_par, fit_nss, nss, DiscountCurve
 from bondlab.analytics import bump_curve
@@ -765,7 +769,7 @@ print("先読みなしで過去日を再現できました")
 #
 # | 用語 | 英語 | 一行定義 |
 # |---|---|---|
-# | モニタリング | monitoring | 市場・ポジション・モデル出力を定時観測し平常からの逸脱を早く捉える継続監視 |
-# | アラート閾値 | alert threshold | 逸脱を知らせる境界値。過去分布の分位点で決め、誤報率を制御する |
-# | シグナル | signal | 発注判断の起点となる相対価値の指標（バタフライ $z$、rich/cheap 残差など） |
-# | 誤報率 | false alarm rate | 本来行動不要なのにアラートが鳴った割合。閾値と検出率のトレードオフにある |
+# | [モニタリング](../../glossary/09_trading.md#monitoring) | monitoring | 市場・ポジション・モデル出力を定時観測し平常からの逸脱を早く捉える継続監視 |
+# | [アラート閾値](../../glossary/09_trading.md#alert-threshold) | alert threshold | 逸脱を知らせる境界値。過去分布の分位点で決め、誤報率を制御する |
+# | [シグナル](../../glossary/09_trading.md#signal) | signal | 発注判断の起点となる相対価値の指標（バタフライ $z$、rich/cheap 残差など） |
+# | [誤報率](../../glossary/09_trading.md#false-alarm-rate) | false alarm rate | 本来行動不要なのにアラートが鳴った割合。閾値と検出率のトレードオフにある |

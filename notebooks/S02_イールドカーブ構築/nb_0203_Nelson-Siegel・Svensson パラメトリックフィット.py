@@ -325,7 +325,11 @@ print("\nfit_nss_2stage は bondlab.curve.fit_nss と一致")
 # %%
 import matplotlib.pyplot as plt
 
-plt.rcParams["font.family"] = ["Hiragino Sans", "Yu Gothic", "Meiryo", "IPAexGothic", "Noto Sans CJK JP", "Arial Unicode MS", "DejaVu Sans"]
+import matplotlib.font_manager as _fm
+for _f in ["Hiragino Sans", "Yu Gothic", "Meiryo", "IPAexGothic", "Noto Sans CJK JP", "Noto Sans JP", "TakaoPGothic", "IPAPGothic"]:
+    if any(_f == _n.name for _n in _fm.fontManager.ttflist):
+        plt.rcParams["font.family"] = _f
+        break
 plt.rcParams["axes.unicode_minus"] = False
 taus = np.linspace(0.05, 30.0, 300)
 lam = 2.0
@@ -537,8 +541,8 @@ display(corr.round(4))
 #
 # | 用語 | 英語 | 一行定義 |
 # |---|---|---|
-# | Nelson-Siegel | Nelson-Siegel | レベル・スロープ・曲率の3因子でゼロ曲線を表す4パラメータの関数形 |
-# | Svensson | Svensson | NS に第2曲率項を足し山を2つ許した6パラメータ拡張（NSS） |
-# | 因子負荷 | factor loading | 各因子を1動かしたときのカーブの年限別感応度。ゼロレートの偏微分 |
-# | 非線形最小二乗 | nonlinear least squares | パラメータが非線形に入る残差二乗和の最小化。局所解・初期値依存に注意 |
-# | 多重共線性 | multicollinearity | 計画行列の列がほぼ平行で係数推定が不安定になる状態。λ が近いと発生 |
+# | [Nelson-Siegel](../../glossary/02_curves.md#nelson-siegel) | Nelson-Siegel | レベル・スロープ・曲率の3因子でゼロ曲線を表す4パラメータの関数形 |
+# | [Svensson](../../glossary/02_curves.md#svensson) | Svensson | NS に第2曲率項を足し山を2つ許した6パラメータ拡張（NSS） |
+# | [因子負荷](../../glossary/02_curves.md#factor-loading) | factor loading | 各因子を1動かしたときのカーブの年限別感応度。ゼロレートの偏微分 |
+# | [非線形最小二乗](../../glossary/02_curves.md#nonlinear-least-squares) | nonlinear least squares | パラメータが非線形に入る残差二乗和の最小化。局所解・初期値依存に注意 |
+# | [多重共線性](../../glossary/02_curves.md#multicollinearity) | multicollinearity | 計画行列の列がほぼ平行で係数推定が不安定になる状態。λ が近いと発生 |

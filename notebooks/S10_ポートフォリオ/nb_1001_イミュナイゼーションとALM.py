@@ -209,7 +209,11 @@ import datetime as dt
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
-plt.rcParams["font.family"] = ["Hiragino Sans", "Yu Gothic", "Meiryo", "IPAexGothic", "Noto Sans CJK JP", "Arial Unicode MS", "DejaVu Sans"]
+import matplotlib.font_manager as _fm
+for _f in ["Hiragino Sans", "Yu Gothic", "Meiryo", "IPAexGothic", "Noto Sans CJK JP", "Noto Sans JP", "TakaoPGothic", "IPAPGothic"]:
+    if any(_f == _n.name for _n in _fm.fontManager.ttflist):
+        plt.rcParams["font.family"] = _f
+        break
 plt.rcParams["axes.unicode_minus"] = False
 from scipy.optimize import linprog
 
@@ -661,8 +665,8 @@ print(f"\nKRD近似 ΔS ≈ -Σ(KRDミスマッチ·Δz) = {dS_krd:+.3f}  （実
 #
 # | 用語 | 英語 | 一行定義 |
 # |---|---|---|
-# | 免疫化 | immunization | デュレーション一致とコンベクシティ条件で、平行シフトにサープラスを不感応化する手法 |
-# | ALM | asset-liability management | 資産と負債の金利感応を総合管理し、サープラスを守る枠組み |
-# | サープラス | surplus | 資産と負債の現在価値の差 $S=A-L$ |
-# | デュレーションギャップ | duration gap | 資産と負債の（金額加重）デュレーションの差 $D_A-D_L$ |
-# | CFマッチング | cash-flow matching | 各時点の負債CFを資産CFで直接賄い、金利リスクを消す手法 |
+# | [免疫化](../../glossary/10_portfolio.md#immunization) | immunization | デュレーション一致とコンベクシティ条件で、平行シフトにサープラスを不感応化する手法 |
+# | [ALM](../../glossary/10_portfolio.md#asset-liability-management) | asset-liability management | 資産と負債の金利感応を総合管理し、サープラスを守る枠組み |
+# | [サープラス](../../glossary/10_portfolio.md#surplus) | surplus | 資産と負債の現在価値の差 $S=A-L$ |
+# | [デュレーションギャップ](../../glossary/10_portfolio.md#duration-gap) | duration gap | 資産と負債の（金額加重）デュレーションの差 $D_A-D_L$ |
+# | [CFマッチング](../../glossary/10_portfolio.md#cash-flow-matching) | cash-flow matching | 各時点の負債CFを資産CFで直接賄い、金利リスクを消す手法 |

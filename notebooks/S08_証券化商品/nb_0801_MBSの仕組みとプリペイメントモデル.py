@@ -182,7 +182,11 @@
 import numpy as np
 import matplotlib.pyplot as plt
 
-plt.rcParams["font.family"] = ["Hiragino Sans", "Yu Gothic", "Meiryo", "IPAexGothic", "Noto Sans CJK JP", "Arial Unicode MS", "DejaVu Sans"]
+import matplotlib.font_manager as _fm
+for _f in ["Hiragino Sans", "Yu Gothic", "Meiryo", "IPAexGothic", "Noto Sans CJK JP", "Noto Sans JP", "TakaoPGothic", "IPAPGothic"]:
+    if any(_f == _n.name for _n in _fm.fontManager.ttflist):
+        plt.rcParams["font.family"] = _f
+        break
 plt.rcParams["axes.unicode_minus"] = False
 import bondlab
 from bondlab.mbs import psa_cpr, cpr_to_smm, smm_to_cpr, mbs_cashflows, weighted_average_life
@@ -634,9 +638,9 @@ plt.show()
 #
 # | 用語 | 英語 | 一行定義 |
 # |---|---|---|
-# | プリペイメント | prepayment | 住宅ローンの繰上返済。MBS の元本が予定より早く返る現象 |
-# | CPR | conditional prepayment rate | 期限前償還の年率。残高に対し1年で何%返るか |
-# | SMM | single monthly mortality | 期限前償還の月率。$1-\text{SMM}=(1-\text{CPR})^{1/12}$ |
-# | PSA | Public Securities Association model | age の関数で CPR を標準化した速度基準。100 で30ヶ月かけ6%へ |
-# | 加重平均年限 | weighted average life (WAL) | 元本返済を時点で加重した平均年限 |
-# | バーンアウト | burnout | 期限前償還を経たプールで、同じ金利差でも借換反応が鈍る履歴依存 |
+# | [プリペイメント](../../glossary/08_securitization.md#prepayment) | prepayment | 住宅ローンの繰上返済。MBS の元本が予定より早く返る現象 |
+# | [CPR](../../glossary/08_securitization.md#conditional-prepayment-rate) | conditional prepayment rate | 期限前償還の年率。残高に対し1年で何%返るか |
+# | [SMM](../../glossary/08_securitization.md#single-monthly-mortality) | single monthly mortality | 期限前償還の月率。$1-\text{SMM}=(1-\text{CPR})^{1/12}$ |
+# | [PSA](../../glossary/08_securitization.md#public-securities-association-model) | Public Securities Association model | age の関数で CPR を標準化した速度基準。100 で30ヶ月かけ6%へ |
+# | [加重平均年限](../../glossary/08_securitization.md#weighted-average-life-wal) | weighted average life (WAL) | 元本返済を時点で加重した平均年限 |
+# | [バーンアウト](../../glossary/08_securitization.md#burnout) | burnout | 期限前償還を経たプールで、同じ金利差でも借換反応が鈍る履歴依存 |

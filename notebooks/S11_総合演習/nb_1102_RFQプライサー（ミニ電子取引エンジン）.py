@@ -173,7 +173,11 @@ import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 
-plt.rcParams["font.family"] = ["Hiragino Sans", "Yu Gothic", "Meiryo", "IPAexGothic", "Noto Sans CJK JP", "Arial Unicode MS", "DejaVu Sans"]
+import matplotlib.font_manager as _fm
+for _f in ["Hiragino Sans", "Yu Gothic", "Meiryo", "IPAexGothic", "Noto Sans CJK JP", "Noto Sans JP", "TakaoPGothic", "IPAPGothic"]:
+    if any(_f == _n.name for _n in _fm.fontManager.ttflist):
+        plt.rcParams["font.family"] = _f
+        break
 plt.rcParams["axes.unicode_minus"] = False
 from bondlab.curve import fit_nss, nss
 
@@ -617,8 +621,8 @@ print("一致: app/rfq_pricer.py はこの純粋関数版を FastAPI で包む")
 #
 # | 用語 | 英語 | 一行定義 |
 # |---|---|---|
-# | RFQ | request for quote | 銘柄・サイズ・方向を指定して複数ディーラーへ気配を求める見積依頼方式 |
-# | ミッド | mid | bid/ask の中心となるフェアバリュー推定。ここではカーブ＋rich/cheap残差 |
-# | クォート | quote | ディーラーが返す bid（買値）・ask（売値）の組 |
-# | マーケットメイク | market making | 継続的に両面クォートを出し、スプレッドで稼ぎつつ在庫を捌く行為 |
-# | 在庫リスク | inventory risk | 約定で抱えたポジションの価格変動リスク。サイズとボラで拡大 |
+# | [RFQ](../../glossary/09_trading.md#request-for-quote) | request for quote | 銘柄・サイズ・方向を指定して複数ディーラーへ気配を求める見積依頼方式 |
+# | [ミッド](../../glossary/09_trading.md#mid) | mid | bid/ask の中心となるフェアバリュー推定。ここではカーブ＋rich/cheap残差 |
+# | [クォート](../../glossary/09_trading.md#quote) | quote | ディーラーが返す bid（買値）・ask（売値）の組 |
+# | [マーケットメイク](../../glossary/09_trading.md#market-making) | market making | 継続的に両面クォートを出し、スプレッドで稼ぎつつ在庫を捌く行為 |
+# | [在庫リスク](../../glossary/09_trading.md#inventory-risk) | inventory risk | 約定で抱えたポジションの価格変動リスク。サイズとボラで拡大 |

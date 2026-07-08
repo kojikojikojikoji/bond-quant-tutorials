@@ -381,7 +381,11 @@ display(df_show)
 # %%
 import matplotlib.pyplot as plt
 
-plt.rcParams["font.family"] = ["Hiragino Sans", "Yu Gothic", "Meiryo", "IPAexGothic", "Noto Sans CJK JP", "Arial Unicode MS", "DejaVu Sans"]
+import matplotlib.font_manager as _fm
+for _f in ["Hiragino Sans", "Yu Gothic", "Meiryo", "IPAexGothic", "Noto Sans CJK JP", "Noto Sans JP", "TakaoPGothic", "IPAPGothic"]:
+    if any(_f == _n.name for _n in _fm.fontManager.ttflist):
+        plt.rcParams["font.family"] = _f
+        break
 plt.rcParams["axes.unicode_minus"] = False
 fig, axes = plt.subplots(1, 2, figsize=(13, 5))
 grid_dy = np.linspace(-0.02, 0.02, 81)  # ±200bp を連続で
@@ -430,8 +434,8 @@ plt.show()
 #
 # | 用語 | 英語 | 一行定義 |
 # |---|---|---|
-# | 修正デュレーション | modified duration | 利回りが1動いたときの価格の相対変化率。$-\frac1P\frac{dP}{dy}$ |
-# | 実効デュレーション | effective duration | 価格関数をバンプして数値微分した感応度。CF が金利依存でも使える |
-# | コンベクシティ | convexity | 価格-利回り曲線の曲率。$\frac1P\frac{d^2P}{dy^2}$。通常は正 |
-# | バンプ法 | bump-and-revalue | 入力を微小変化させ、価格差から感応度を数値微分する手法 |
-# | テイラー展開 | Taylor expansion | 関数を基準点まわりの多項式で近似する展開。価格変化の1次/2次近似の土台 |
+# | [修正デュレーション](../../glossary/03_risk.md#modified-duration) | modified duration | 利回りが1動いたときの価格の相対変化率。$-\frac1P\frac{dP}{dy}$ |
+# | [実効デュレーション](../../glossary/03_risk.md#effective-duration) | effective duration | 価格関数をバンプして数値微分した感応度。CF が金利依存でも使える |
+# | [コンベクシティ](../../glossary/03_risk.md#convexity) | convexity | 価格-利回り曲線の曲率。$\frac1P\frac{d^2P}{dy^2}$。通常は正 |
+# | [バンプ法](../../glossary/03_risk.md#bump-and-revalue) | bump-and-revalue | 入力を微小変化させ、価格差から感応度を数値微分する手法 |
+# | [テイラー展開](../../glossary/03_risk.md#taylor-expansion) | Taylor expansion | 関数を基準点まわりの多項式で近似する展開。価格変化の1次/2次近似の土台 |

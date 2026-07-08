@@ -221,8 +221,8 @@ for d in schedule:
 #
 # | 用語 | 英語 | 一行定義 |
 # |---|---|---|
-# | 仮想環境 | virtual environment | プロジェクト単位で依存を隔離する Python の実行環境 |
-# | パッケージ | package | 再利用可能なモジュールの集合。ここでは `bondlab` |
-# | ユニットテスト | unit test | 関数単位で期待挙動を自動検証する仕組み |
-# | 割引係数 | discount factor | 将来1単位の現在価値。レートと年数から定まる |
-# | 複利規約 | compounding convention | 利息を年に何回複利計算するかの取り決め |
+# | [仮想環境](../../glossary/00_tooling.md#virtual-environment) | virtual environment | プロジェクト単位で依存を隔離する Python の実行環境 |
+# | [パッケージ](../../glossary/00_tooling.md#package) | package | 再利用可能なモジュールの集合。ここでは `bondlab` |
+# | [ユニットテスト](../../glossary/00_tooling.md#unit-test) | unit test | 関数単位で期待挙動を自動検証する仕組み |
+# | [割引係数](../../glossary/00_tooling.md#discount-factor) | discount factor | 将来1単位の現在価値。レートと年数から定まる |
+# | [複利規約](../../glossary/00_tooling.md#compounding-convention) | compounding convention | 利息を年に何回複利計算するかの取り決め |

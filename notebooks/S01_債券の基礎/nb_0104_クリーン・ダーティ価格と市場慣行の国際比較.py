@@ -413,8 +413,8 @@ for name, bond_i, settle_i, years_i, ac_i in [
 #
 # | 用語 | 英語 | 一行定義 |
 # |---|---|---|
-# | 経過利子 | accrued interest | 直前利払日から受渡日までの、売り手に帰属する未払い利息 |
-# | クリーン価格 | clean price | 経過利子を除いた気配価格。銘柄・時点間の比較に使う |
-# | ダーティ価格 | dirty price | クリーン価格に経過利子を足した実際の受渡代金 |
-# | T+1決済 | T+1 settlement | 約定の翌営業日に受け渡す慣行。UST・Gilt が採用 |
-# | 受渡日 | settlement date | 資金と証券が実際に交換される日。経過利子計算の基準日 |
+# | [経過利子](../../glossary/01_bond_basics.md#accrued-interest) | accrued interest | 直前利払日から受渡日までの、売り手に帰属する未払い利息 |
+# | [クリーン価格](../../glossary/01_bond_basics.md#clean-price) | clean price | 経過利子を除いた気配価格。銘柄・時点間の比較に使う |
+# | [ダーティ価格](../../glossary/01_bond_basics.md#dirty-price) | dirty price | クリーン価格に経過利子を足した実際の受渡代金 |
+# | [T+1決済](../../glossary/01_bond_basics.md#t-1-settlement) | T+1 settlement | 約定の翌営業日に受け渡す慣行。UST・Gilt が採用 |
+# | [受渡日](../../glossary/01_bond_basics.md#settlement-date) | settlement date | 資金と証券が実際に交換される日。経過利子計算の基準日 |

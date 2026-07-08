@@ -179,7 +179,11 @@
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
-plt.rcParams["font.family"] = ["Hiragino Sans", "Yu Gothic", "Meiryo", "IPAexGothic", "Noto Sans CJK JP", "Arial Unicode MS", "DejaVu Sans"]
+import matplotlib.font_manager as _fm
+for _f in ["Hiragino Sans", "Yu Gothic", "Meiryo", "IPAexGothic", "Noto Sans CJK JP", "Noto Sans JP", "TakaoPGothic", "IPAPGothic"]:
+    if any(_f == _n.name for _n in _fm.fontManager.ttflist):
+        plt.rcParams["font.family"] = _f
+        break
 plt.rcParams["axes.unicode_minus"] = False
 from scipy.optimize import brentq
 
@@ -702,8 +706,8 @@ plt.show()
 #
 # | 用語 | 英語 | 一行定義 |
 # |---|---|---|
-# | コーラブル債 | callable bond | 発行体が定価で買い戻せる債券。ストレート債−コールオプション |
-# | OAS | option-adjusted spread | オプションを織り込んだうえでモデル価格を市場価格に合わせる一定スプレッド |
-# | 後退帰納法 | backward induction | 満期から時間をさかのぼり、各節点で継続価値と行使価値を比較して評価する手続き |
-# | Zスプレッド | zero-volatility spread | オプションを無視し約定CFを割り引いて市場価格に一致させる一定スプレッド |
-# | 行使境界 | exercise boundary | 継続価値とコール価格が入れ替わる金利水準。これより低金利でコールされる |
+# | [コーラブル債](../../glossary/06_derivatives.md#callable-bond) | callable bond | 発行体が定価で買い戻せる債券。ストレート債−コールオプション |
+# | [OAS](../../glossary/06_derivatives.md#option-adjusted-spread) | option-adjusted spread | オプションを織り込んだうえでモデル価格を市場価格に合わせる一定スプレッド |
+# | [後退帰納法](../../glossary/06_derivatives.md#backward-induction) | backward induction | 満期から時間をさかのぼり、各節点で継続価値と行使価値を比較して評価する手続き |
+# | [Zスプレッド](../../glossary/06_derivatives.md#zero-volatility-spread) | zero-volatility spread | オプションを無視し約定CFを割り引いて市場価格に一致させる一定スプレッド |
+# | [行使境界](../../glossary/06_derivatives.md#exercise-boundary) | exercise boundary | 継続価値とコール価格が入れ替わる金利水準。これより低金利でコールされる |

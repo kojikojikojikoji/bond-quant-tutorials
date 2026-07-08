@@ -174,7 +174,11 @@
 import numpy as np
 import matplotlib.pyplot as plt
 
-plt.rcParams["font.family"] = ["Hiragino Sans", "Yu Gothic", "Meiryo", "IPAexGothic", "Noto Sans CJK JP", "Arial Unicode MS", "DejaVu Sans"]
+import matplotlib.font_manager as _fm
+for _f in ["Hiragino Sans", "Yu Gothic", "Meiryo", "IPAexGothic", "Noto Sans CJK JP", "Noto Sans JP", "TakaoPGothic", "IPAPGothic"]:
+    if any(_f == _n.name for _n in _fm.fontManager.ttflist):
+        plt.rcParams["font.family"] = _f
+        break
 plt.rcParams["axes.unicode_minus"] = False
 import bondlab
 from bondlab.credit import HazardCurve
@@ -515,8 +519,8 @@ for lam in lam_grid:
 #
 # | 用語 | 英語 | 一行定義 |
 # |---|---|---|
-# | ハザードレート | hazard rate | 生存を条件とした瞬間デフォルト速度 $\lambda(t)=-S'(t)/S(t)$ |
-# | サバイバル確率 | survival probability | 時点 $t$ までデフォルトしない確率 $S(t)=e^{-\int_0^t\lambda}$ |
-# | 回収率 | recovery rate | デフォルト時に回収できる額面比率 $R$（無担保シニアは慣行40%） |
-# | 強度モデル | intensity model | デフォルトを強度 $\lambda$ のポアソン過程の第1到着として表す誘導形モデル |
-# | リスキー割引 | risky discounting | 無リスク割引係数に生存確率を掛けて将来CFを割り引く手法 $DF(t)S(t)$ |
+# | [ハザードレート](../../glossary/07_credit.md#hazard-rate) | hazard rate | 生存を条件とした瞬間デフォルト速度 $\lambda(t)=-S'(t)/S(t)$ |
+# | [サバイバル確率](../../glossary/07_credit.md#survival-probability) | survival probability | 時点 $t$ までデフォルトしない確率 $S(t)=e^{-\int_0^t\lambda}$ |
+# | [回収率](../../glossary/07_credit.md#recovery-rate) | recovery rate | デフォルト時に回収できる額面比率 $R$（無担保シニアは慣行40%） |
+# | [強度モデル](../../glossary/07_credit.md#intensity-model) | intensity model | デフォルトを強度 $\lambda$ のポアソン過程の第1到着として表す誘導形モデル |
+# | [リスキー割引](../../glossary/07_credit.md#risky-discounting) | risky discounting | 無リスク割引係数に生存確率を掛けて将来CFを割り引く手法 $DF(t)S(t)$ |

@@ -161,7 +161,11 @@ import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 
-plt.rcParams["font.family"] = ["Hiragino Sans", "Yu Gothic", "Meiryo", "IPAexGothic", "Noto Sans CJK JP", "Arial Unicode MS", "DejaVu Sans"]
+import matplotlib.font_manager as _fm
+for _f in ["Hiragino Sans", "Yu Gothic", "Meiryo", "IPAexGothic", "Noto Sans CJK JP", "Noto Sans JP", "TakaoPGothic", "IPAPGothic"]:
+    if any(_f == _n.name for _n in _fm.fontManager.ttflist):
+        plt.rcParams["font.family"] = _f
+        break
 plt.rcParams["axes.unicode_minus"] = False
 from bondlab.curve import fit_nss, nss
 
@@ -452,8 +456,8 @@ display(liq_check[["z_score", "resid_bp", "rich_cheap_bp"]].round(2))
 #
 # | 用語 | 英語 | 一行定義 |
 # |---|---|---|
-# | rich/cheap | rich/cheap | フィットカーブに対する割高（rich）・割安（cheap） |
-# | フィット残差 | fitted residual | 実測利回りとモデル利回りの差。rich/cheap の尺度 |
-# | 平均回帰半減期 | mean-reversion half-life | 乖離が半分に縮む期間。$-\ln 2/\ln\phi$ |
-# | Z スコア | z-score | 残差を時系列平均・標準偏差で基準化した無次元量 |
-# | on-the-run | on-the-run | 直近発行で最も流動性の高い銘柄。rich に寄りやすい |
+# | [rich/cheap](../../glossary/09_trading.md#rich-cheap) | rich/cheap | フィットカーブに対する割高（rich）・割安（cheap） |
+# | [フィット残差](../../glossary/09_trading.md#fitted-residual) | fitted residual | 実測利回りとモデル利回りの差。rich/cheap の尺度 |
+# | [平均回帰半減期](../../glossary/09_trading.md#mean-reversion-half-life) | mean-reversion half-life | 乖離が半分に縮む期間。$-\ln 2/\ln\phi$ |
+# | [Z スコア](../../glossary/09_trading.md#z-score) | z-score | 残差を時系列平均・標準偏差で基準化した無次元量 |
+# | [on-the-run](../../glossary/09_trading.md#on-the-run) | on-the-run | 直近発行で最も流動性の高い銘柄。rich に寄りやすい |

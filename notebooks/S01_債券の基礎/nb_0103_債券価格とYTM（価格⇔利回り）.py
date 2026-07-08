@@ -550,7 +550,11 @@ for r in rows:
 # %%
 import matplotlib.pyplot as plt
 
-plt.rcParams["font.family"] = ["Hiragino Sans", "Yu Gothic", "Meiryo", "IPAexGothic", "Noto Sans CJK JP", "Arial Unicode MS", "DejaVu Sans"]
+import matplotlib.font_manager as _fm
+for _f in ["Hiragino Sans", "Yu Gothic", "Meiryo", "IPAexGothic", "Noto Sans CJK JP", "Noto Sans JP", "TakaoPGothic", "IPAPGothic"]:
+    if any(_f == _n.name for _n in _fm.fontManager.ttflist):
+        plt.rcParams["font.family"] = _f
+        break
 plt.rcParams["axes.unicode_minus"] = False
 name, iss, mat, cpn, _ = universe[1]
 sc = coupon_schedule(iss, mat, 2)
@@ -609,8 +613,8 @@ plt.show()
 #
 # | 用語 | 英語 | 一行定義 |
 # |---|---|---|
-# | 最終利回り | yield to maturity (YTM) | 価格式を市場価格に一致させる割引率。将来CFに対する内部収益率 |
-# | パー債 | par bond | クーポン率と YTM が等しく、清算価格が額面ちょうどになる債券 |
-# | 単利利回り | simple yield | クーポンと償還損益を年割りし価格で割った、複利を考えない利回り |
-# | Newton法 | Newton's method | 価格と一階微分を使い接線で根を追う反復解法。初期値に敏感 |
-# | 凸性 | convexity | 価格-利回り曲線の下に凸な性質。一次近似のずれの主要項 |
+# | [最終利回り](../../glossary/01_bond_basics.md#yield-to-maturity-ytm) | yield to maturity (YTM) | 価格式を市場価格に一致させる割引率。将来CFに対する内部収益率 |
+# | [パー債](../../glossary/01_bond_basics.md#par-bond) | par bond | クーポン率と YTM が等しく、清算価格が額面ちょうどになる債券 |
+# | [単利利回り](../../glossary/01_bond_basics.md#simple-yield) | simple yield | クーポンと償還損益を年割りし価格で割った、複利を考えない利回り |
+# | [Newton法](../../glossary/01_bond_basics.md#newton-s-method) | Newton's method | 価格と一階微分を使い接線で根を追う反復解法。初期値に敏感 |
+# | [凸性](../../glossary/01_bond_basics.md#convexity) | convexity | 価格-利回り曲線の下に凸な性質。一次近似のずれの主要項 |

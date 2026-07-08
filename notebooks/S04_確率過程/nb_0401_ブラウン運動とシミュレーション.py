@@ -187,7 +187,11 @@
 import numpy as np
 import matplotlib.pyplot as plt
 
-plt.rcParams["font.family"] = ["Hiragino Sans", "Yu Gothic", "Meiryo", "IPAexGothic", "Noto Sans CJK JP", "Arial Unicode MS", "DejaVu Sans"]
+import matplotlib.font_manager as _fm
+for _f in ["Hiragino Sans", "Yu Gothic", "Meiryo", "IPAexGothic", "Noto Sans CJK JP", "Noto Sans JP", "TakaoPGothic", "IPAPGothic"]:
+    if any(_f == _n.name for _n in _fm.fontManager.ttflist):
+        plt.rcParams["font.family"] = _f
+        break
 plt.rcParams["axes.unicode_minus"] = False
 import bondlab
 from bondlab import sim
@@ -411,7 +415,7 @@ print("終端の平均 =", round(float(W[:, -1].mean()), 4),
 #
 # | 用語 | 英語 | 一行定義 |
 # |---|---|---|
-# | ブラウン運動 | Brownian motion | 独立・定常な正規増分をもつ連続確率過程。$W_t \sim \mathcal{N}(0,t)$ |
-# | 独立増分 | independent increments | 重ならない区間の増分が互いに独立という性質 |
-# | 2次変分 | quadratic variation | 増分の2乗和の細分極限。ブラウン運動では $[W]_t = t$ |
-# | スケーリング極限 | scaling limit | ランダムウォークを時間・空間ともに縮小した $n\to\infty$ の極限。ブラウン運動になる |
+# | [ブラウン運動](../../glossary/04_stochastic.md#brownian-motion) | Brownian motion | 独立・定常な正規増分をもつ連続確率過程。$W_t \sim \mathcal{N}(0,t)$ |
+# | [独立増分](../../glossary/04_stochastic.md#independent-increments) | independent increments | 重ならない区間の増分が互いに独立という性質 |
+# | [2次変分](../../glossary/04_stochastic.md#quadratic-variation) | quadratic variation | 増分の2乗和の細分極限。ブラウン運動では $[W]_t = t$ |
+# | [スケーリング極限](../../glossary/04_stochastic.md#scaling-limit) | scaling limit | ランダムウォークを時間・空間ともに縮小した $n\to\infty$ の極限。ブラウン運動になる |

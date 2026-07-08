@@ -168,7 +168,11 @@
 import numpy as np
 import matplotlib.pyplot as plt
 
-plt.rcParams["font.family"] = ["Hiragino Sans", "Yu Gothic", "Meiryo", "IPAexGothic", "Noto Sans CJK JP", "Arial Unicode MS", "DejaVu Sans"]
+import matplotlib.font_manager as _fm
+for _f in ["Hiragino Sans", "Yu Gothic", "Meiryo", "IPAexGothic", "Noto Sans CJK JP", "Noto Sans JP", "TakaoPGothic", "IPAPGothic"]:
+    if any(_f == _n.name for _n in _fm.fontManager.ttflist):
+        plt.rcParams["font.family"] = _f
+        break
 plt.rcParams["axes.unicode_minus"] = False
 import bondlab
 from bondlab.curve import DiscountCurve, bootstrap_par
@@ -496,8 +500,8 @@ print(f"相対差 = {abs(dv01_analytic - dv01_numeric) / dv01_analytic:.2%}")
 #
 # | 用語 | 英語 | 一行定義 |
 # |---|---|---|
-# | FRA | forward rate agreement | 将来区間の金利を今日固定する契約。複製でフォワードレートが決まる |
-# | 固定レッグ | fixed leg | スワップの固定金利側。PV は $Nc\sum\tau_i P(t_i)$ |
-# | 変動レッグ | floating leg | スワップの変動金利側。単利フォワードで評価し $1-P(t_n)$ にテレスコープ |
-# | パースワップレート | par swap rate | スワップ NPV をゼロにする固定レート $(1-P(t_n))/A$ |
-# | アニュイティ | annuity | 固定レッグ 1 単位クーポンの現在価値 $A=\sum\tau_i P(t_i)$ |
+# | [FRA](../../glossary/06_derivatives.md#forward-rate-agreement) | forward rate agreement | 将来区間の金利を今日固定する契約。複製でフォワードレートが決まる |
+# | [固定レッグ](../../glossary/06_derivatives.md#fixed-leg) | fixed leg | スワップの固定金利側。PV は $Nc\sum\tau_i P(t_i)$ |
+# | [変動レッグ](../../glossary/06_derivatives.md#floating-leg) | floating leg | スワップの変動金利側。単利フォワードで評価し $1-P(t_n)$ にテレスコープ |
+# | [パースワップレート](../../glossary/06_derivatives.md#par-swap-rate) | par swap rate | スワップ NPV をゼロにする固定レート $(1-P(t_n))/A$ |
+# | [アニュイティ](../../glossary/06_derivatives.md#annuity) | annuity | 固定レッグ 1 単位クーポンの現在価値 $A=\sum\tau_i P(t_i)$ |

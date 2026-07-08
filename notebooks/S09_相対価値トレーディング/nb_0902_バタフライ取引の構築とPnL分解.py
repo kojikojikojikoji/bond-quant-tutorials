@@ -177,7 +177,11 @@ import pandas as pd
 import matplotlib
 import matplotlib.pyplot as plt
 
-plt.rcParams["font.family"] = ["Hiragino Sans", "Yu Gothic", "Meiryo", "IPAexGothic", "Noto Sans CJK JP", "Arial Unicode MS", "DejaVu Sans"]
+import matplotlib.font_manager as _fm
+for _f in ["Hiragino Sans", "Yu Gothic", "Meiryo", "IPAexGothic", "Noto Sans CJK JP", "Noto Sans JP", "TakaoPGothic", "IPAPGothic"]:
+    if any(_f == _n.name for _n in _fm.fontManager.ttflist):
+        plt.rcParams["font.family"] = _f
+        break
 plt.rcParams["axes.unicode_minus"] = False
 from bondlab.curve import bootstrap_par, DiscountCurve
 from bondlab.bond import FixedRateBond
@@ -510,7 +514,7 @@ for name, v in parts.items():
 #
 # | 用語 | 英語 | 一行定義 |
 # |---|---|---|
-# | バタフライ | butterfly | カーブ3点のウィングとボディを反対に建て、曲率を取る取引 |
-# | DV01ニュートラル | DV01-neutral | 符号付きDV01の合計をゼロにし、平行移動に損益中立な状態 |
-# | リスクウェイト | risk weighting | ウィングのDV01を回帰ベータ比で配分し、スロープを消す重み付け |
-# | PnL分解 | PnL attribution | 損益をキャリー・ロール・カーブ変化・コンベクシティへ要因分解すること |
+# | [バタフライ](../../glossary/09_trading.md#butterfly) | butterfly | カーブ3点のウィングとボディを反対に建て、曲率を取る取引 |
+# | [DV01ニュートラル](../../glossary/09_trading.md#dv01-neutral) | DV01-neutral | 符号付きDV01の合計をゼロにし、平行移動に損益中立な状態 |
+# | [リスクウェイト](../../glossary/09_trading.md#risk-weighting) | risk weighting | ウィングのDV01を回帰ベータ比で配分し、スロープを消す重み付け |
+# | [PnL分解](../../glossary/09_trading.md#pnl-attribution) | PnL attribution | 損益をキャリー・ロール・カーブ変化・コンベクシティへ要因分解すること |

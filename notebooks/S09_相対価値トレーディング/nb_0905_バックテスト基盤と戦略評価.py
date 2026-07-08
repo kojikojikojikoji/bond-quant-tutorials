@@ -157,7 +157,11 @@ import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 
-plt.rcParams["font.family"] = ["Hiragino Sans", "Yu Gothic", "Meiryo", "IPAexGothic", "Noto Sans CJK JP", "Arial Unicode MS", "DejaVu Sans"]
+import matplotlib.font_manager as _fm
+for _f in ["Hiragino Sans", "Yu Gothic", "Meiryo", "IPAexGothic", "Noto Sans CJK JP", "Noto Sans JP", "TakaoPGothic", "IPAPGothic"]:
+    if any(_f == _n.name for _n in _fm.fontManager.ttflist):
+        plt.rcParams["font.family"] = _f
+        break
 plt.rcParams["axes.unicode_minus"] = False
 import bondlab
 from bondlab import bt
@@ -563,7 +567,7 @@ print("最大ドローダウン: {:.5f}".format(dd.min()))
 #
 # | 用語 | 英語 | 一行定義 |
 # |---|---|---|
-# | ルックアヘッドバイアス | look-ahead bias | 約定時点で知り得ない未来情報を使い、成績を過大評価する誤り |
-# | ポイントインタイム | point-in-time | 各時点で実際に見えていた値だけを使うデータの扱い |
-# | 最大ドローダウン | maximum drawdown | 累積損益が過去高値からどれだけ落ちたかの最悪値 |
-# | 過剰適合 | overfitting | パラメータ探索でノイズに当てはめ、将来再現しない戦略を作ること |
+# | [ルックアヘッドバイアス](../../glossary/09_trading.md#look-ahead-bias) | look-ahead bias | 約定時点で知り得ない未来情報を使い、成績を過大評価する誤り |
+# | [ポイントインタイム](../../glossary/09_trading.md#point-in-time) | point-in-time | 各時点で実際に見えていた値だけを使うデータの扱い |
+# | [最大ドローダウン](../../glossary/09_trading.md#maximum-drawdown) | maximum drawdown | 累積損益が過去高値からどれだけ落ちたかの最悪値 |
+# | [過剰適合](../../glossary/09_trading.md#overfitting) | overfitting | パラメータ探索でノイズに当てはめ、将来再現しない戦略を作ること |

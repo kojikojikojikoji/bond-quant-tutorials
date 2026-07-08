@@ -171,7 +171,11 @@ import datetime as dt
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
-plt.rcParams["font.family"] = ["Hiragino Sans", "Yu Gothic", "Meiryo", "IPAexGothic", "Noto Sans CJK JP", "Arial Unicode MS", "DejaVu Sans"]
+import matplotlib.font_manager as _fm
+for _f in ["Hiragino Sans", "Yu Gothic", "Meiryo", "IPAexGothic", "Noto Sans CJK JP", "Noto Sans JP", "TakaoPGothic", "IPAPGothic"]:
+    if any(_f == _n.name for _n in _fm.fontManager.ttflist):
+        plt.rcParams["font.family"] = _f
+        break
 plt.rcParams["axes.unicode_minus"] = False
 import cvxpy as cp
 
@@ -622,7 +626,7 @@ display(detail.sort_values("アクティブ%").head(5).round(3))
 #
 # | 用語 | 英語 | 一行定義 |
 # |---|---|---|
-# | ファクターリスクモデル | factor risk model | リスクを少数の観測可能な因子（KRD・sDV01等）のエクスポージャで表す枠組み |
-# | 凸最適化 | convex optimization | 凸目的・凸制約の最適化。局所最適が大域最適で、双対と一括して解ける |
-# | 回転率制約 | turnover constraint | 現保有からの売買総額（片道 $\tfrac12\lVert w-w_0\rVert_1$）を上限で縛る制約 |
-# | シャドープライス | shadow price | 制約の右辺を1単位ゆるめたときの目的関数の変化。双対変数 $\partial p^\star/\partial b$ |
+# | [ファクターリスクモデル](../../glossary/10_portfolio.md#factor-risk-model) | factor risk model | リスクを少数の観測可能な因子（KRD・sDV01等）のエクスポージャで表す枠組み |
+# | [凸最適化](../../glossary/10_portfolio.md#convex-optimization) | convex optimization | 凸目的・凸制約の最適化。局所最適が大域最適で、双対と一括して解ける |
+# | [回転率制約](../../glossary/10_portfolio.md#turnover-constraint) | turnover constraint | 現保有からの売買総額（片道 $\tfrac12\lVert w-w_0\rVert_1$）を上限で縛る制約 |
+# | [シャドープライス](../../glossary/10_portfolio.md#shadow-price) | shadow price | 制約の右辺を1単位ゆるめたときの目的関数の変化。双対変数 $\partial p^\star/\partial b$ |

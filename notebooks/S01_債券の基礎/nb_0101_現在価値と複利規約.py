@@ -38,7 +38,9 @@
 #
 # $$ PV = C \cdot DF(t). $$
 #
-# 割引係数を金利で表す方法が複利規約（compounding convention）です。同じ $DF(t)$ でも、年に何回利息を組み入れるかで表示上のレートが変わります。
+# 割引係数を金利で表す方法が複利規約（compounding convention）です。同じ $DF(t)$ でも、年に何回利息を組み入れるかで表示上のレートが変わります。#
+#
+# **なぜ現在価値を計算するのか。** 債券・スワップ・ローンなど、あらゆる金融商品の価値は「将来受け取る（あるいは払う）お金」でできています。ところが今の100万円と1年後の100万円は同じ価値ではありません。その1年で金利分だけ運用できるので、将来のお金は今の価値に割り引いて考える必要があります。将来キャッシュフローをすべて現在価値に引き直して合計すると、はじめて1つの「価格」という共通のものさしになります。トレーダーが値付けし、リスク管理が損益や DV01 を測り、運用会社が満期もクーポンも違う銘柄を横並びで比較できるのは、この現在価値の合計＝価格を共通言語にしているからです。逆に現在価値を出せなければ、債券の理論価格もヘッジに必要な数量も計算できません。ここから先の全シリーズは、この「将来のお金を今の価値に直す」操作の上に積み上がります。
 #
 # ### 単利・複利・連続複利
 #
@@ -64,7 +66,9 @@
 #
 # ### 割引係数とゼロレートの関係
 #
-# 時点 $t$ 一括で満期を迎えるゼロクーポンから逆算した金利をゼロレート（zero rate）またはスポットレート（spot rate）と呼びます。割引係数を規約 $m$ のレートについて解くと、
+# 時点 $t$ 一括で満期を迎えるゼロクーポンから逆算した金利をゼロレート（zero rate）またはスポットレート（spot rate）と呼びます。#
+#
+# **なぜゼロレートを使うのか。** クーポン債には受取時点の異なる複数のキャッシュフローがあり、それぞれ「その時点までの割引率」で割り引く必要があります。ところが債券の最終利回り（YTM）は全キャッシュフローをまとめて表した1つの平均的な利回りなので、個々のキャッシュフローを正しく割り引くのには使えません。各時点に対応するゼロレート（＝その満期のゼロクーポン債から逆算した利回り）を年限ごとに並べたカーブがあって初めて、どんなキャッシュフロー列でも「各金額をその受取時点のゼロレートで割り引いて足す」という正しい現在価値計算ができます。このゼロレートのカーブがあらゆる債券・デリバティブ評価に共通する割引の土台であり、S2 ではこれを市場価格から組み立てます（ブートストラップ）。割引係数を規約 $m$ のレートについて解くと、
 #
 # $$ DF(t) = \left(1 + \frac{r}{m}\right)^{-mt}
 #    \;\Longleftrightarrow\;
@@ -367,7 +371,11 @@ print("annual − continuous の差 (bp):", np.round(gap_bp.to_numpy(), 3))
 # %%
 import matplotlib.pyplot as plt
 
-plt.rcParams["font.family"] = ["Hiragino Sans", "Yu Gothic", "Meiryo", "IPAexGothic", "Noto Sans CJK JP", "Arial Unicode MS", "DejaVu Sans"]
+import matplotlib.font_manager as _fm
+for _f in ["Hiragino Sans", "Yu Gothic", "Meiryo", "IPAexGothic", "Noto Sans CJK JP", "Noto Sans JP", "TakaoPGothic", "IPAPGothic"]:
+    if any(_f == _n.name for _n in _fm.fontManager.ttflist):
+        plt.rcParams["font.family"] = _f
+        break
 plt.rcParams["axes.unicode_minus"] = False
 fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(12, 4))
 ax1.plot(tenors, df_curve, marker="o")
@@ -408,7 +416,7 @@ plt.show()
 #
 # | 用語 | 英語 | 一行定義 |
 # |---|---|---|
-# | 割引係数 | discount factor | 将来1単位の現在価値。$m$回複利で $(1+r/m)^{-mt}$、連続複利で $e^{-rt}$ |
-# | 連続複利 | continuous compounding | 複利回数を無限大にした極限。$DF=e^{-rt}$、$r_c=m\ln(1+r/m)$ |
-# | スポットレート | spot rate | 時点 $t$ 満期のゼロクーポンから逆算した金利。ゼロレートに同じ |
-# | 現在価値 | present value | 将来キャッシュフローを割引係数で今に引き直した価値 $PV=C\cdot DF(t)$ |
+# | [割引係数](../../glossary/01_bond_basics.md#discount-factor) | discount factor | 将来1単位の現在価値。$m$回複利で $(1+r/m)^{-mt}$、連続複利で $e^{-rt}$ |
+# | [連続複利](../../glossary/01_bond_basics.md#continuous-compounding) | continuous compounding | 複利回数を無限大にした極限。$DF=e^{-rt}$、$r_c=m\ln(1+r/m)$ |
+# | [スポットレート](../../glossary/01_bond_basics.md#spot-rate) | spot rate | 時点 $t$ 満期のゼロクーポンから逆算した金利。ゼロレートに同じ |
+# | [現在価値](../../glossary/01_bond_basics.md#present-value) | present value | 将来キャッシュフローを割引係数で今に引き直した価値 $PV=C\cdot DF(t)$ |

@@ -580,7 +580,11 @@ print(pd.DataFrame({"tenor": node_t[1:], "zero%": np.round(node_zero, 3),
 # %%
 import matplotlib.pyplot as plt
 
-plt.rcParams["font.family"] = ["Hiragino Sans", "Yu Gothic", "Meiryo", "IPAexGothic", "Noto Sans CJK JP", "Arial Unicode MS", "DejaVu Sans"]
+import matplotlib.font_manager as _fm
+for _f in ["Hiragino Sans", "Yu Gothic", "Meiryo", "IPAexGothic", "Noto Sans CJK JP", "Noto Sans JP", "TakaoPGothic", "IPAPGothic"]:
+    if any(_f == _n.name for _n in _fm.fontManager.ttflist):
+        plt.rcParams["font.family"] = _f
+        break
 plt.rcParams["axes.unicode_minus"] = False
 interps = {
     "ゼロ線形": lz,
@@ -678,8 +682,8 @@ for label, obj in interps.items():
 #
 # | 用語 | 英語 | 一行定義 |
 # |---|---|---|
-# | 補間 | interpolation | ノード間の値を関数で埋める操作。対象量の選択がフォワードの形を決める |
-# | スプライン | spline | 区間ごとの低次多項式を、ノードで滑らかさを保ってつないだ関数 |
-# | 単調性 | monotonicity | 入力の増減を補間が保つ性質。フォワードの正値・非振動に効く |
-# | 局所性 | locality | 1点の入力変化が近傍の区間だけに影響し、遠くへ波及しない性質 |
-# | Hagan-West | Hagan-West (monotone convex) | フォワードを直接構成し、正値・非振動・局所性・入力厳密再現を両立する補間 |
+# | [補間](../../glossary/02_curves.md#interpolation) | interpolation | ノード間の値を関数で埋める操作。対象量の選択がフォワードの形を決める |
+# | [スプライン](../../glossary/02_curves.md#spline) | spline | 区間ごとの低次多項式を、ノードで滑らかさを保ってつないだ関数 |
+# | [単調性](../../glossary/02_curves.md#monotonicity) | monotonicity | 入力の増減を補間が保つ性質。フォワードの正値・非振動に効く |
+# | [局所性](../../glossary/02_curves.md#locality) | locality | 1点の入力変化が近傍の区間だけに影響し、遠くへ波及しない性質 |
+# | [Hagan-West](../../glossary/02_curves.md#hagan-west-monotone-convex) | Hagan-West (monotone convex) | フォワードを直接構成し、正値・非振動・局所性・入力厳密再現を両立する補間 |

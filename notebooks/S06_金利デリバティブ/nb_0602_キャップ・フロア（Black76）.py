@@ -203,7 +203,11 @@
 # %%
 import numpy as np
 import matplotlib.pyplot as plt
-plt.rcParams["font.family"] = ["Hiragino Sans", "Yu Gothic", "Meiryo", "IPAexGothic", "Noto Sans CJK JP", "Arial Unicode MS", "DejaVu Sans"]
+import matplotlib.font_manager as _fm
+for _f in ["Hiragino Sans", "Yu Gothic", "Meiryo", "IPAexGothic", "Noto Sans CJK JP", "Noto Sans JP", "TakaoPGothic", "IPAPGothic"]:
+    if any(_f == _n.name for _n in _fm.fontManager.ttflist):
+        plt.rcParams["font.family"] = _f
+        break
 plt.rcParams["axes.unicode_minus"] = False
 from scipy import stats
 from scipy.optimize import brentq
@@ -603,8 +607,8 @@ plt.show()
 #
 # | 用語 | 英語 | 一行定義 |
 # |---|---|---|
-# | Black'76 | Black'76 | フォワードを対数正規と仮定した金利オプションの標準評価式 |
-# | キャップレット | caplet | キャップを構成する1利払期分のコール型金利オプション |
-# | インプライドボラティリティ | implied volatility | 市場価格をモデルに反転して得るボラ。フラット／スポットの別がある |
-# | Bachelierモデル | Bachelier model | 金利を正規（加法的）と仮定する評価モデル。低・負金利で機能する |
-# | フォワード測度 | forward measure | 満期 T の割引債をニュメレールとする測度。フォワードがマルチンゲール |
+# | [Black'76](../../glossary/06_derivatives.md#black-76) | Black'76 | フォワードを対数正規と仮定した金利オプションの標準評価式 |
+# | [キャップレット](../../glossary/06_derivatives.md#caplet) | caplet | キャップを構成する1利払期分のコール型金利オプション |
+# | [インプライドボラティリティ](../../glossary/06_derivatives.md#implied-volatility) | implied volatility | 市場価格をモデルに反転して得るボラ。フラット／スポットの別がある |
+# | [Bachelierモデル](../../glossary/06_derivatives.md#bachelier-model) | Bachelier model | 金利を正規（加法的）と仮定する評価モデル。低・負金利で機能する |
+# | [フォワード測度](../../glossary/06_derivatives.md#forward-measure) | forward measure | 満期 T の割引債をニュメレールとする測度。フォワードがマルチンゲール |

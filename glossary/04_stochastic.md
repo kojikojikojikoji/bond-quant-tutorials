@@ -3,6 +3,7 @@
 定義の正はこのファイル。各 notebook 末尾の用語表はここへのリンクとして扱う。
 項目は S4 の各 notebook（S4-1〜S4-5）の初出順にまとまっている。
 
+<a id="brownian-motion"></a>
 ### ブラウン運動（Brownian motion）
 - 定義: $W_0=0$、独立増分、定常増分 $W_t-W_s\sim\mathcal{N}(0,t-s)$、連続な見本路
   をもつ確率過程。見本路はほとんど確実に至る所微分不可能で非有界変動。
@@ -10,12 +11,14 @@
 - 関連: 独立増分, 2次変分, スケーリング極限
 - 初出: S4-1
 
+<a id="independent-increments"></a>
 ### 独立増分（independent increments）
 - 定義: 重ならない時間区間にわたる増分が互いに独立という性質。
   $0\le t_0<\dots<t_k$ に対し $W_{t_1}-W_{t_0},\dots,W_{t_k}-W_{t_{k-1}}$ が独立。
 - 関連: ブラウン運動
 - 初出: S4-1
 
+<a id="quadratic-variation"></a>
 ### 2次変分（quadratic variation）
 - 定義: 分割を細かくした極限での増分2乗和。ブラウン運動では確定値 $t$ に収束する
   （$L^2$ かつほとんど確実に）。1次変分が発散するのと対照的で、$(dW)^2=dt$ の
@@ -24,6 +27,7 @@
 - 関連: ブラウン運動
 - 初出: S4-1
 
+<a id="scaling-limit"></a>
 ### スケーリング極限（scaling limit）
 - 定義: ランダムウォークを時間 $1/n$・空間 $1/\sqrt{n}$ で縮小した $n\to\infty$ の
   極限。ドンスカーの定理により増分の分布によらず標準ブラウン運動へ分布収束する。
@@ -31,6 +35,7 @@
 - 関連: ブラウン運動
 - 初出: S4-1
 
+<a id="it-integral"></a>
 ### 伊藤積分（Itô integral）
 - 定義: 被積分過程 $H_t$ を各小区間の**左端点**で評価して構成する確率積分。
   左端点評価により $H_{t_i}$ が増分 $W_{t_{i+1}}-W_{t_i}$ と独立になり、積分が
@@ -40,6 +45,7 @@
 - 関連: 伊藤の公式, 2次変分, Ornstein-Uhlenbeck過程
 - 初出: S4-2
 
+<a id="it-s-formula"></a>
 ### 伊藤の公式（Itô's formula）
 - 定義: 確率過程 $X_t$ の関数 $f(t,X_t)$ の微分を与える公式。通常の連鎖律に
   加えて2次変分由来の $\tfrac12\sigma^2 f_{xx}$ 項が付く。GBM・OU の厳密解の
@@ -49,6 +55,7 @@
 - 関連: 伊藤積分, ドリフト, 拡散係数
 - 初出: S4-2
 
+<a id="drift"></a>
 ### ドリフト（drift）
 - 定義: SDE $dX=\mu\,dt+\sigma\,dW$ の $dt$ の係数 $\mu(t,x)$。単位時間あたりの
   変化の平均的な向きと大きさを表す。OU 過程では $\kappa(\theta-x)$ が平均回帰を担う。
@@ -56,6 +63,7 @@
 - 関連: 拡散係数, 伊藤の公式
 - 初出: S4-2
 
+<a id="diffusion-coefficient"></a>
 ### 拡散係数（diffusion coefficient）
 - 定義: SDE の $dW$ の係数 $\sigma(t,x)$。揺らぎ（ボラティリティ）の大きさを表す。
   二乗が単位時間あたりの分散増加率 $\sigma^2$ を与える（$(dW)^2=dt$ より）。
@@ -63,6 +71,7 @@
 - 関連: ドリフト, 伊藤積分
 - 初出: S4-2
 
+<a id="ornstein-uhlenbeck-process"></a>
 ### Ornstein-Uhlenbeck過程（Ornstein-Uhlenbeck process）
 - 定義: 水準 $\theta$ へ速さ $\kappa>0$ で引き戻される平均回帰過程。条件付き分布・
   定常分布ともに正規分布になる、扱いやすいガウス過程。S5 の Vasicek 金利モデルの
@@ -72,6 +81,7 @@
 - 関連: 伊藤積分, ドリフト
 - 初出: S4-2
 
+<a id="euler-maruyama-method"></a>
 ### Euler-Maruyama法（Euler-Maruyama method）
 - 定義: SDE $dX=a\,dt+b\,dW$ を区間左端の係数で離散化する最も基本的な数値解法。
   決定的な Euler 法に確率項 $b\,\Delta W_i$ を足した形で、あらゆる SDE に使えるが、
@@ -80,6 +90,7 @@
 - 関連: Milstein法, 強収束, 弱収束, ドリフト, 拡散係数
 - 初出: S4-3
 
+<a id="milstein-method"></a>
 ### Milstein法（Milstein method）
 - 定義: Euler-Maruyama に、区間内での拡散係数の揺らぎを1段補正する項を加えた解法。
   伊藤・テイラー展開から現れる $\int\Delta W\,dW=\tfrac12(\Delta W^2-\Delta t)$ に
@@ -89,6 +100,7 @@
 - 関連: Euler-Maruyama法, 強収束, 拡散係数
 - 初出: S4-3
 
+<a id="strong-convergence"></a>
 ### 強収束（strong convergence）
 - 定義: 真の解と数値解を**同一のブラウン運動**で走らせたときの、パス単位の終端誤差の
   期待値が $O(\Delta t^\gamma)$ で減る速さ。$\gamma$ を強収束次数と呼ぶ。軌道そのものの
@@ -97,6 +109,7 @@
 - 関連: 弱収束, Euler-Maruyama法, Milstein法
 - 初出: S4-3
 
+<a id="weak-convergence"></a>
 ### 弱収束（weak convergence）
 - 定義: 滑らかな関数の期待値（分布・モーメント）の誤差が $O(\Delta t^\beta)$ で減る速さ。
   $\beta$ を弱収束次数と呼ぶ。個々のパスの一致は問わない。デリバティブ価格は割引ペイオフの
@@ -105,6 +118,7 @@
 - 関連: 強収束, Euler-Maruyama法
 - 初出: S4-3
 
+<a id="full-truncation"></a>
 ### full truncation（full truncation）
 - 定義: CIR など拡散に平方根を含む過程の Euler 離散化で、拡散項に $\sqrt{\max(r,0)}$ を
   使う修正。状態が負に振れても平方根が実数のまま計算でき、NaN 破綻を防ぐ。負値到達率
@@ -114,6 +128,7 @@
 - 関連: Euler-Maruyama法, Ornstein-Uhlenbeck過程
 - 初出: S4-3
 
+<a id="standard-error"></a>
 ### 標準誤差（standard error）
 - 定義: モンテカルロ推定量 $\hat{\theta}_n$ のばらつきの尺度。標本標準偏差 $s$ を
   $\sqrt{n}$ で割った値で、中心極限定理から $\hat{\theta}_n \pm 1.96\,\mathrm{SE}$ が
@@ -122,6 +137,7 @@
 - 関連: 対照変量法, 制御変量法
 - 初出: S4-4
 
+<a id="antithetic-variates"></a>
 ### 対照変量法（antithetic variates）
 - 定義: 正規乱数 $Z$ とその符号反転 $-Z$ を対にし、両者のペイオフの平均を1標本に
   使う分散削減法。ペイオフが単調なら対が負に相関し、独立2標本より分散が下がる。
@@ -129,6 +145,7 @@
 - 関連: 標準誤差, 制御変量法
 - 初出: S4-4
 
+<a id="control-variate"></a>
 ### 制御変量法（control variate）
 - 定義: 目標 $X$ と相関し期待値 $\mu_Y$ が既知の変量 $Y$ を使い、$X-c(Y-\mu_Y)$ で
   補正して分散を下げる不偏な手法。最適係数 $c^\*=\operatorname{Cov}(X,Y)/\operatorname{Var}(Y)$
@@ -137,6 +154,7 @@
 - 関連: 標準誤差, 対照変量法
 - 初出: S4-4
 
+<a id="quasi-random"></a>
 ### 準乱数（quasi-random）
 - 定義: 定義域 $[0,1)^d$ を意図的に均一に埋める決定的な点列（低食い違い量列）。
   擬似乱数の $O(n^{-1/2})$ に対し積分誤差が速く縮む。逆累積分布 $\Phi^{-1}$ で
@@ -145,6 +163,7 @@
 - 関連: Sobol系列, 標準誤差
 - 初出: S4-4
 
+<a id="sobol-sequence"></a>
 ### Sobol系列（Sobol sequence）
 - 定義: 代表的な低食い違い量列の一つ。$2^m$ 個の点で均一性が最良になる。次元が
   小さければ食い違い量が実質 $O(n^{-1})$ に近く、$1/\sqrt{n}$ より速く収束する。
@@ -152,6 +171,7 @@
 - 関連: 準乱数
 - 初出: S4-4
 
+<a id="risk-neutral-measure"></a>
 ### リスク中立測度（risk-neutral measure）
 - 定義: 割引資産をマルチンゲールにする確率測度 $\mathbb{Q}$。この測度の下では、任意の資産の
   現在価格が「割引した将来ペイオフの期待値」に一致する。価格づけに使う測度で、現実の
@@ -160,6 +180,7 @@
 - 関連: 複製ポートフォリオ, ニュメレール, Girsanovの定理
 - 初出: S4-5
 
+<a id="num-raire"></a>
 ### ニュメレール（numéraire）
 - 定義: 価値を測る基準に選ぶ、正の価格を持つ資産。ニュメレールを取り替えると対応する
   確率測度も変わり、その資産で割った価格がマルチンゲールになる。無リスク債ならリスク中立
@@ -168,6 +189,7 @@
 - 関連: リスク中立測度
 - 初出: S4-5
 
+<a id="girsanov-s-theorem"></a>
 ### Girsanovの定理（Girsanov's theorem）
 - 定義: 測度を実測度 $\mathbb{P}$ からリスク中立測度 $\mathbb{Q}$ へ取り替えると、ブラウン運動に
   ドリフトが付け替わることを述べる定理。拡散項は不変で、変わるのはドリフトだけ。付け替えの
@@ -176,6 +198,7 @@
 - 関連: リスクの市場価格, リスク中立測度, ブラウン運動
 - 初出: S4-5
 
+<a id="replicating-portfolio"></a>
 ### 複製ポートフォリオ（replicating portfolio）
 - 定義: デリバティブと同じ将来ペイオフを再現する、原資産と無リスク債の組み合わせ。無裁定
   より、デリバティブ価格は複製ポートフォリオの組成コストに一致する。これが「期待値で価格が
@@ -184,6 +207,7 @@
 - 関連: リスク中立測度
 - 初出: S4-5
 
+<a id="market-price-of-risk"></a>
 ### リスクの市場価格（market price of risk）
 - 定義: リスク 1 単位あたりの超過リターン $\theta=(\mu-r)/\sigma$。Girsanov の付け替え量が
   ちょうどこの $\theta$ で、実測度とリスク中立測度を橋渡しする。$\mathbb{Q}$ の下では全資産が

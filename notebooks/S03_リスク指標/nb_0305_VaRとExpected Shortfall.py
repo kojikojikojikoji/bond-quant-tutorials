@@ -163,7 +163,11 @@ from scipy import stats
 
 import matplotlib.pyplot as plt
 
-plt.rcParams["font.family"] = ["Hiragino Sans", "Yu Gothic", "Meiryo", "IPAexGothic", "Noto Sans CJK JP", "Arial Unicode MS", "DejaVu Sans"]
+import matplotlib.font_manager as _fm
+for _f in ["Hiragino Sans", "Yu Gothic", "Meiryo", "IPAexGothic", "Noto Sans CJK JP", "Noto Sans JP", "TakaoPGothic", "IPAPGothic"]:
+    if any(_f == _n.name for _n in _fm.fontManager.ttflist):
+        plt.rcParams["font.family"] = _f
+        break
 plt.rcParams["axes.unicode_minus"] = False
 import bondlab
 from bondlab import risk as blrisk
@@ -453,7 +457,7 @@ print("→ bondlab.risk.kupiec_pof と一致")
 # | 用語 | 英語 | 一行定義 |
 # |---|---|---|
 # | バリュー・アット・リスク | VaR | 信頼水準 $\alpha$ で、損失がそれ以下に収まる損失水準。損益分布の下側分位点を正の損失で表す |
-# | エクスペクテッド・ショートフォール | Expected Shortfall | VaR を超える損失の条件付き期待値。裾の平均損失で、常に VaR 以上 |
-# | 劣加法性 | subadditivity | $\rho(A+B)\le\rho(A)+\rho(B)$。ES は満たし VaR は一般に満たさない |
+# | [エクスペクテッド・ショートフォール](../../glossary/03_risk.md#expected-shortfall) | Expected Shortfall | VaR を超える損失の条件付き期待値。裾の平均損失で、常に VaR 以上 |
+# | [劣加法性](../../glossary/03_risk.md#subadditivity) | subadditivity | $\rho(A+B)\le\rho(A)+\rho(B)$。ES は満たし VaR は一般に満たさない |
 # | キューピック検定 | Kupiec test | VaR 例外数が想定被覆率と整合するかを尤度比で調べる POF 検定 |
-# | バックテスティング | backtesting | 実現損益が VaR 予測を超えた回数を数え、モデルの妥当性を事後検証すること |
+# | [バックテスティング](../../glossary/03_risk.md#backtesting) | backtesting | 実現損益が VaR 予測を超えた回数を数え、モデルの妥当性を事後検証すること |

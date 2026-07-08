@@ -146,7 +146,11 @@ import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 
-plt.rcParams["font.family"] = ["Hiragino Sans", "Yu Gothic", "Meiryo", "IPAexGothic", "Noto Sans CJK JP", "Arial Unicode MS", "DejaVu Sans"]
+import matplotlib.font_manager as _fm
+for _f in ["Hiragino Sans", "Yu Gothic", "Meiryo", "IPAexGothic", "Noto Sans CJK JP", "Noto Sans JP", "TakaoPGothic", "IPAPGothic"]:
+    if any(_f == _n.name for _n in _fm.fontManager.ttflist):
+        plt.rcParams["font.family"] = _f
+        break
 plt.rcParams["axes.unicode_minus"] = False
 import bondlab
 from bondlab.bt import conversion_factor as simple_conversion_factor
@@ -417,7 +421,7 @@ plt.show()
 #
 # | 用語 | 英語 | 一行定義 |
 # |---|---|---|
-# | コンバージョンファクター | conversion factor | 受渡適格銘柄を標準物6%利回りで割り引いた価格/100。金利に依存しない換算係数 |
-# | CTD（最割安銘柄） | cheapest-to-deliver | 先物の受渡しで渡すのが最も得な銘柄。ネットベーシス最小＝インプライドレポ最大 |
-# | インプライドレポ | implied repo rate | 現物買い／先物売りの裁定を組んだときの実現利回り。最大の銘柄が CTD |
-# | ネットベーシス | net basis | グロスベーシスからキャリーを除いた受渡しの実質コスト。最小の銘柄が CTD |
+# | [コンバージョンファクター](../../glossary/09_trading.md#conversion-factor) | conversion factor | 受渡適格銘柄を標準物6%利回りで割り引いた価格/100。金利に依存しない換算係数 |
+# | [CTD（最割安銘柄）](../../glossary/09_trading.md#cheapest-to-deliver) | cheapest-to-deliver | 先物の受渡しで渡すのが最も得な銘柄。ネットベーシス最小＝インプライドレポ最大 |
+# | [インプライドレポ](../../glossary/09_trading.md#implied-repo-rate) | implied repo rate | 現物買い／先物売りの裁定を組んだときの実現利回り。最大の銘柄が CTD |
+# | [ネットベーシス](../../glossary/09_trading.md#net-basis) | net basis | グロスベーシスからキャリーを除いた受渡しの実質コスト。最小の銘柄が CTD |

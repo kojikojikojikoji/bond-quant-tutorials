@@ -158,7 +158,11 @@ import matplotlib
 
 import matplotlib.pyplot as plt
 
-plt.rcParams["font.family"] = ["Hiragino Sans", "Yu Gothic", "Meiryo", "IPAexGothic", "Noto Sans CJK JP", "Arial Unicode MS", "DejaVu Sans"]
+import matplotlib.font_manager as _fm
+for _f in ["Hiragino Sans", "Yu Gothic", "Meiryo", "IPAexGothic", "Noto Sans CJK JP", "Noto Sans JP", "TakaoPGothic", "IPAPGothic"]:
+    if any(_f == _n.name for _n in _fm.fontManager.ttflist):
+        plt.rcParams["font.family"] = _f
+        break
 plt.rcParams["axes.unicode_minus"] = False
 import bondlab
 from bondlab import analytics
@@ -542,8 +546,8 @@ print(f"\nワースト損失: {pnl_df['損益'].min():,.4f}  （シナリオ: {p
 #
 # | 用語 | 英語 | 一行定義 |
 # |---|---|---|
-# | 主成分分析 | principal component analysis | 相関する多変量の変動を、無相関な少数の軸へ座標変換する手法。共分散の固有値分解で得る |
-# | 固有値 | eigenvalue | $\Sigma w=\lambda w$ の $\lambda$。その主成分が説明する分散に等しい |
-# | ストレステスト | stress test | 極端なシナリオ下でポートフォリオ損益・耐性を評価する手法 |
-# | シナリオ損益 | scenario P&L | あるシナリオ（カーブシフト等）で再評価した価値と基準価値の差 |
-# | 寄与率 | explained variance ratio | 全分散に対する各主成分の分散の割合。累積で説明力を測る |
+# | [主成分分析](../../glossary/03_risk.md#principal-component-analysis-pca) | principal component analysis | 相関する多変量の変動を、無相関な少数の軸へ座標変換する手法。共分散の固有値分解で得る |
+# | [固有値](../../glossary/03_risk.md#eigenvalue) | eigenvalue | $\Sigma w=\lambda w$ の $\lambda$。その主成分が説明する分散に等しい |
+# | [ストレステスト](../../glossary/03_risk.md#stress-test) | stress test | 極端なシナリオ下でポートフォリオ損益・耐性を評価する手法 |
+# | [シナリオ損益](../../glossary/03_risk.md#scenario-p-l) | scenario P&L | あるシナリオ（カーブシフト等）で再評価した価値と基準価値の差 |
+# | [寄与率](../../glossary/03_risk.md#explained-variance-ratio) | explained variance ratio | 全分散に対する各主成分の分散の割合。累積で説明力を測る |

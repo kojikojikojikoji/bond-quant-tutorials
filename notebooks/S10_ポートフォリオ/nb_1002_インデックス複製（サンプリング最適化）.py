@@ -149,7 +149,11 @@ from pathlib import Path
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
-plt.rcParams["font.family"] = ["Hiragino Sans", "Yu Gothic", "Meiryo", "IPAexGothic", "Noto Sans CJK JP", "Arial Unicode MS", "DejaVu Sans"]
+import matplotlib.font_manager as _fm
+for _f in ["Hiragino Sans", "Yu Gothic", "Meiryo", "IPAexGothic", "Noto Sans CJK JP", "Noto Sans JP", "TakaoPGothic", "IPAPGothic"]:
+    if any(_f == _n.name for _n in _fm.fontManager.ttflist):
+        plt.rcParams["font.family"] = _f
+        break
 plt.rcParams["axes.unicode_minus"] = False
 import cvxpy as cp
 
@@ -630,7 +634,7 @@ display(cmp)
 #
 # | 用語 | 英語 | 一行定義 |
 # |---|---|---|
-# | トラッキングエラー | tracking error | 複製とベンチマークのリターン差の標準偏差。追随の精度指標 |
-# | 完全法 | full replication | 全構成銘柄を指数ウェイトで保有する複製。債券では流動性の壁で困難 |
-# | 層化サンプリング | stratified sampling | 母集団をセルへ分割し各セルから代表を抽出する部分複製 |
-# | セル法 | cell approach | セクション×年限×格付のセルへ層化し代表銘柄へ集約する複製法 |
+# | [トラッキングエラー](../../glossary/10_portfolio.md#tracking-error) | tracking error | 複製とベンチマークのリターン差の標準偏差。追随の精度指標 |
+# | [完全法](../../glossary/10_portfolio.md#full-replication) | full replication | 全構成銘柄を指数ウェイトで保有する複製。債券では流動性の壁で困難 |
+# | [層化サンプリング](../../glossary/10_portfolio.md#stratified-sampling) | stratified sampling | 母集団をセルへ分割し各セルから代表を抽出する部分複製 |
+# | [セル法](../../glossary/10_portfolio.md#cell-approach) | cell approach | セクション×年限×格付のセルへ層化し代表銘柄へ集約する複製法 |

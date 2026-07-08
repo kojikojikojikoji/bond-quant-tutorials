@@ -1,0 +1,1426 @@
+{
+"仮想環境": [
+[
+"00_tooling.md",
+"virtual-environment"
+]
+],
+"パッケージ": [
+[
+"00_tooling.md",
+"package"
+]
+],
+"ユニットテスト": [
+[
+"00_tooling.md",
+"unit-test"
+]
+],
+"継続的インテグレーション": [
+[
+"00_tooling.md",
+"ci-continuous-integration"
+]
+],
+"割引係数": [
+[
+"00_tooling.md",
+"discount-factor"
+],
+[
+"01_bond_basics.md",
+"discount-factor"
+]
+],
+"複利規約": [
+[
+"00_tooling.md",
+"compounding-convention"
+]
+],
+"パー利回り": [
+[
+"00_tooling.md",
+"par-yield"
+]
+],
+"CMT": [
+[
+"00_tooling.md",
+"constant-maturity-treasury"
+]
+],
+"売買参考統計値": [
+[
+"00_tooling.md",
+"jsda-reference-prices"
+]
+],
+"ベンチマーク銘柄": [
+[
+"00_tooling.md",
+"benchmark-issue"
+]
+],
+"API キー": [
+[
+"00_tooling.md",
+"api-key"
+]
+],
+"回帰テスト": [
+[
+"00_tooling.md",
+"regression-test"
+]
+],
+"カバレッジ": [
+[
+"00_tooling.md",
+"coverage"
+]
+],
+"API設計": [
+[
+"00_tooling.md",
+"api-design"
+]
+],
+"セマンティックバージョニング": [
+[
+"00_tooling.md",
+"semantic-versioning"
+]
+],
+"連続複利": [
+[
+"01_bond_basics.md",
+"continuous-compounding"
+]
+],
+"スポットレート": [
+[
+"01_bond_basics.md",
+"spot-rate"
+]
+],
+"現在価値": [
+[
+"01_bond_basics.md",
+"present-value"
+]
+],
+"日数計算規約": [
+[
+"01_bond_basics.md",
+"day-count-convention"
+]
+],
+"ACT/360": [
+[
+"01_bond_basics.md",
+"actual-360"
+]
+],
+"ACT/365F": [
+[
+"01_bond_basics.md",
+"actual-365-fixed"
+]
+],
+"30/360": [
+[
+"01_bond_basics.md",
+"30-360-us-bond-basis"
+]
+],
+"ACT/ACT": [
+[
+"01_bond_basics.md",
+"actual-actual-isda"
+]
+],
+"修正翌営業日": [
+[
+"01_bond_basics.md",
+"modified-following"
+]
+],
+"利払スケジュール": [
+[
+"01_bond_basics.md",
+"coupon-schedule"
+]
+],
+"休日カレンダー": [
+[
+"01_bond_basics.md",
+"holiday-calendar"
+]
+],
+"最終利回り": [
+[
+"01_bond_basics.md",
+"yield-to-maturity-ytm"
+]
+],
+"パー債": [
+[
+"01_bond_basics.md",
+"par-bond"
+]
+],
+"単利利回り": [
+[
+"01_bond_basics.md",
+"simple-yield"
+]
+],
+"Newton法": [
+[
+"01_bond_basics.md",
+"newton-s-method"
+]
+],
+"凸性": [
+[
+"01_bond_basics.md",
+"convexity"
+]
+],
+"経過利子": [
+[
+"01_bond_basics.md",
+"accrued-interest"
+]
+],
+"クリーン価格": [
+[
+"01_bond_basics.md",
+"clean-price"
+]
+],
+"ダーティ価格": [
+[
+"01_bond_basics.md",
+"dirty-price"
+]
+],
+"T+1決済": [
+[
+"01_bond_basics.md",
+"t-1-settlement"
+]
+],
+"受渡日": [
+[
+"01_bond_basics.md",
+"settlement-date"
+]
+],
+"ブートストラップ": [
+[
+"02_curves.md",
+"bootstrap"
+]
+],
+"ゼロカーブ": [
+[
+"02_curves.md",
+"zero-curve"
+]
+],
+"フォワードレート": [
+[
+"02_curves.md",
+"forward-rate"
+],
+[
+"09_trading.md",
+"forward-rate"
+]
+],
+"パーレート": [
+[
+"02_curves.md",
+"par-rate"
+]
+],
+"剥ぎ取り": [
+[
+"02_curves.md",
+"strip"
+]
+],
+"Nelson-Siegel": [
+[
+"02_curves.md",
+"nelson-siegel"
+]
+],
+"Svensson": [
+[
+"02_curves.md",
+"svensson"
+]
+],
+"因子負荷": [
+[
+"02_curves.md",
+"factor-loading"
+]
+],
+"非線形最小二乗": [
+[
+"02_curves.md",
+"nonlinear-least-squares"
+]
+],
+"多重共線性": [
+[
+"02_curves.md",
+"multicollinearity"
+]
+],
+"ポイントインタイム": [
+[
+"02_curves.md",
+"point-in-time"
+],
+[
+"09_trading.md",
+"point-in-time"
+]
+],
+"外れ値検出": [
+[
+"02_curves.md",
+"outlier-detection"
+]
+],
+"リグレッションテスト": [
+[
+"02_curves.md",
+"regression-test"
+]
+],
+"フォールバック": [
+[
+"02_curves.md",
+"fallback"
+]
+],
+"OIS": [
+[
+"02_curves.md",
+"overnight-index-swap"
+]
+],
+"SOFR/TONA": [
+[
+"02_curves.md",
+"secured-overnight-financing-rate-tokyo-overnight-average-rate"
+]
+],
+"CSA": [
+[
+"02_curves.md",
+"credit-support-annex"
+]
+],
+"RFR": [
+[
+"02_curves.md",
+"risk-free-rate"
+]
+],
+"デュアルブートストラップ": [
+[
+"02_curves.md",
+"dual-bootstrap"
+]
+],
+"凸性調整": [
+[
+"02_curves.md",
+"convexity-adjustment"
+]
+],
+"補間": [
+[
+"02_curves.md",
+"interpolation"
+]
+],
+"スプライン": [
+[
+"02_curves.md",
+"spline"
+]
+],
+"単調性": [
+[
+"02_curves.md",
+"monotonicity"
+]
+],
+"局所性": [
+[
+"02_curves.md",
+"locality"
+]
+],
+"Hagan-West": [
+[
+"02_curves.md",
+"hagan-west-monotone-convex"
+]
+],
+"修正デュレーション": [
+[
+"03_risk.md",
+"modified-duration"
+]
+],
+"実効デュレーション": [
+[
+"03_risk.md",
+"effective-duration"
+]
+],
+"コンベクシティ": [
+[
+"03_risk.md",
+"convexity"
+]
+],
+"バンプ法": [
+[
+"03_risk.md",
+"bump-and-revalue"
+]
+],
+"テイラー展開": [
+[
+"03_risk.md",
+"taylor-expansion"
+]
+],
+"DV01": [
+[
+"03_risk.md",
+"dollar-value-of-a-basis-point"
+]
+],
+"BPV": [
+[
+"03_risk.md",
+"basis-point-value"
+]
+],
+"PV01": [
+[
+"03_risk.md",
+"present-value-of-a-basis-point"
+]
+],
+"ヘッジ比率": [
+[
+"03_risk.md",
+"hedge-ratio"
+]
+],
+"ベーシスリスク": [
+[
+"03_risk.md",
+"basis-risk"
+]
+],
+"中心差分": [
+[
+"03_risk.md",
+"central-difference"
+]
+],
+"キーレートデュレーション": [
+[
+"03_risk.md",
+"key-rate-duration-krd"
+]
+],
+"パーシャルDV01": [
+[
+"03_risk.md",
+"partial-dv01-dv01"
+]
+],
+"バケッティング": [
+[
+"03_risk.md",
+"bucketing"
+]
+],
+"バーベル": [
+[
+"03_risk.md",
+"barbell"
+]
+],
+"ブレット": [
+[
+"03_risk.md",
+"bullet"
+]
+],
+"主成分分析": [
+[
+"03_risk.md",
+"principal-component-analysis-pca"
+]
+],
+"固有値": [
+[
+"03_risk.md",
+"eigenvalue"
+]
+],
+"寄与率": [
+[
+"03_risk.md",
+"explained-variance-ratio"
+]
+],
+"ストレステスト": [
+[
+"03_risk.md",
+"stress-test"
+]
+],
+"シナリオ損益": [
+[
+"03_risk.md",
+"scenario-p-l"
+]
+],
+"パラレルシフト": [
+[
+"03_risk.md",
+"parallel-shift"
+]
+],
+"バタフライ": [
+[
+"03_risk.md",
+"butterfly"
+],
+[
+"09_trading.md",
+"butterfly"
+]
+],
+"VaR": [
+[
+"03_risk.md",
+"value-at-risk"
+]
+],
+"エクスペクテッド・ショートフォール": [
+[
+"03_risk.md",
+"expected-shortfall"
+]
+],
+"劣加法性": [
+[
+"03_risk.md",
+"subadditivity"
+]
+],
+"Kupiec検定": [
+[
+"03_risk.md",
+"kupiec-test-pof-test"
+]
+],
+"バックテスティング": [
+[
+"03_risk.md",
+"backtesting"
+]
+],
+"ブラウン運動": [
+[
+"04_stochastic.md",
+"brownian-motion"
+]
+],
+"独立増分": [
+[
+"04_stochastic.md",
+"independent-increments"
+]
+],
+"2次変分": [
+[
+"04_stochastic.md",
+"quadratic-variation"
+]
+],
+"スケーリング極限": [
+[
+"04_stochastic.md",
+"scaling-limit"
+]
+],
+"伊藤積分": [
+[
+"04_stochastic.md",
+"it-integral"
+]
+],
+"伊藤の公式": [
+[
+"04_stochastic.md",
+"it-s-formula"
+]
+],
+"ドリフト": [
+[
+"04_stochastic.md",
+"drift"
+]
+],
+"拡散係数": [
+[
+"04_stochastic.md",
+"diffusion-coefficient"
+]
+],
+"Ornstein-Uhlenbeck過程": [
+[
+"04_stochastic.md",
+"ornstein-uhlenbeck-process"
+]
+],
+"Euler-Maruyama法": [
+[
+"04_stochastic.md",
+"euler-maruyama-method"
+]
+],
+"Milstein法": [
+[
+"04_stochastic.md",
+"milstein-method"
+]
+],
+"強収束": [
+[
+"04_stochastic.md",
+"strong-convergence"
+]
+],
+"弱収束": [
+[
+"04_stochastic.md",
+"weak-convergence"
+]
+],
+"full truncation": [
+[
+"04_stochastic.md",
+"full-truncation"
+]
+],
+"標準誤差": [
+[
+"04_stochastic.md",
+"standard-error"
+]
+],
+"対照変量法": [
+[
+"04_stochastic.md",
+"antithetic-variates"
+]
+],
+"制御変量法": [
+[
+"04_stochastic.md",
+"control-variate"
+]
+],
+"準乱数": [
+[
+"04_stochastic.md",
+"quasi-random"
+]
+],
+"Sobol系列": [
+[
+"04_stochastic.md",
+"sobol-sequence"
+]
+],
+"リスク中立測度": [
+[
+"04_stochastic.md",
+"risk-neutral-measure"
+]
+],
+"ニュメレール": [
+[
+"04_stochastic.md",
+"num-raire"
+]
+],
+"Girsanovの定理": [
+[
+"04_stochastic.md",
+"girsanov-s-theorem"
+]
+],
+"複製ポートフォリオ": [
+[
+"04_stochastic.md",
+"replicating-portfolio"
+]
+],
+"リスクの市場価格": [
+[
+"04_stochastic.md",
+"market-price-of-risk"
+],
+[
+"05_rate_models.md",
+"market-price-of-risk"
+]
+],
+"平均回帰": [
+[
+"05_rate_models.md",
+"mean-reversion"
+]
+],
+"アフィンモデル": [
+[
+"05_rate_models.md",
+"affine-model"
+]
+],
+"ゼロクーポン債": [
+[
+"05_rate_models.md",
+"zcb-zero-coupon-bond"
+]
+],
+"平方根過程": [
+[
+"05_rate_models.md",
+"square-root-process"
+]
+],
+"フェラー条件": [
+[
+"05_rate_models.md",
+"feller-condition"
+]
+],
+"非中心カイ二乗分布": [
+[
+"05_rate_models.md",
+"noncentral-chi-squared-distribution"
+]
+],
+"厳密サンプリング": [
+[
+"05_rate_models.md",
+"exact-sampling"
+]
+],
+"no-arbitrageモデル": [
+[
+"05_rate_models.md",
+"no-arbitrage-model"
+]
+],
+"三項ツリー": [
+[
+"05_rate_models.md",
+"trinomial-tree"
+]
+],
+"平均回帰速度": [
+[
+"05_rate_models.md",
+"mean-reversion-speed"
+]
+],
+"θ(t)シフト": [
+[
+"05_rate_models.md",
+"theta-t-shift"
+]
+],
+"キャリブレーション": [
+[
+"05_rate_models.md",
+"calibration"
+]
+],
+"Levenberg-Marquardt法": [
+[
+"05_rate_models.md",
+"levenberg-marquardt"
+]
+],
+"識別性": [
+[
+"05_rate_models.md",
+"identifiability"
+]
+],
+"局所解": [
+[
+"05_rate_models.md",
+"local-minimum"
+]
+],
+"ATMボラ": [
+[
+"05_rate_models.md",
+"at-the-money-volatility"
+]
+],
+"モデルリスク": [
+[
+"05_rate_models.md",
+"model-risk"
+]
+],
+"モデルバリデーション": [
+[
+"05_rate_models.md",
+"model-validation"
+]
+],
+"ベンチマークモデル": [
+[
+"05_rate_models.md",
+"benchmark-model"
+]
+],
+"感応度分析": [
+[
+"05_rate_models.md",
+"sensitivity-analysis"
+]
+],
+"G2++／LMM": [
+[
+"05_rate_models.md",
+"g2-libor-market-model"
+]
+],
+"FRA": [
+[
+"06_derivatives.md",
+"forward-rate-agreement"
+]
+],
+"固定レッグ": [
+[
+"06_derivatives.md",
+"fixed-leg"
+]
+],
+"変動レッグ": [
+[
+"06_derivatives.md",
+"floating-leg"
+]
+],
+"パースワップレート": [
+[
+"06_derivatives.md",
+"par-swap-rate"
+]
+],
+"アニュイティ": [
+[
+"06_derivatives.md",
+"annuity"
+]
+],
+"Black'76": [
+[
+"06_derivatives.md",
+"black-76"
+]
+],
+"キャップレット": [
+[
+"06_derivatives.md",
+"caplet"
+]
+],
+"インプライドボラティリティ": [
+[
+"06_derivatives.md",
+"implied-volatility"
+]
+],
+"Bachelierモデル": [
+[
+"06_derivatives.md",
+"bachelier-model"
+]
+],
+"フォワード測度": [
+[
+"06_derivatives.md",
+"forward-measure"
+]
+],
+"スワップション": [
+[
+"06_derivatives.md",
+"swaption"
+]
+],
+"アニュイティ測度": [
+[
+"06_derivatives.md",
+"annuity-measure"
+]
+],
+"Jamshidian分解": [
+[
+"06_derivatives.md",
+"jamshidian-decomposition"
+]
+],
+"ストラドル": [
+[
+"06_derivatives.md",
+"straddle"
+]
+],
+"コーラブル債": [
+[
+"06_derivatives.md",
+"callable-bond"
+]
+],
+"OAS": [
+[
+"06_derivatives.md",
+"option-adjusted-spread"
+],
+[
+"08_securitization.md",
+"option-adjusted-spread"
+]
+],
+"後退帰納法": [
+[
+"06_derivatives.md",
+"backward-induction"
+]
+],
+"Zスプレッド": [
+[
+"06_derivatives.md",
+"zero-volatility-spread"
+],
+[
+"07_credit.md",
+"z-spread-zero-volatility-spread"
+],
+[
+"08_securitization.md",
+"z-spread-zero-volatility-spread"
+]
+],
+"行使境界": [
+[
+"06_derivatives.md",
+"exercise-boundary"
+]
+],
+"SABR": [
+[
+"06_derivatives.md",
+"sabr-stochastic-alpha-beta-rho"
+]
+],
+"スマイル": [
+[
+"06_derivatives.md",
+"volatility-smile"
+]
+],
+"スキュー": [
+[
+"06_derivatives.md",
+"volatility-skew"
+]
+],
+"ボラティリティキューブ": [
+[
+"06_derivatives.md",
+"volatility-cube"
+]
+],
+"Hagan近似": [
+[
+"06_derivatives.md",
+"hagan-s-approximation"
+]
+],
+"ハザードレート": [
+[
+"07_credit.md",
+"hazard-rate"
+]
+],
+"サバイバル確率": [
+[
+"07_credit.md",
+"survival-probability"
+]
+],
+"回収率": [
+[
+"07_credit.md",
+"recovery-rate"
+]
+],
+"強度モデル": [
+[
+"07_credit.md",
+"intensity-model"
+]
+],
+"リスキー割引": [
+[
+"07_credit.md",
+"risky-discounting"
+]
+],
+"CDS": [
+[
+"07_credit.md",
+"credit-default-swap"
+]
+],
+"プロテクションレッグ": [
+[
+"07_credit.md",
+"protection-leg"
+]
+],
+"パースプレッド": [
+[
+"07_credit.md",
+"par-spread"
+]
+],
+"アップフロント": [
+[
+"07_credit.md",
+"upfront"
+]
+],
+"CS01": [
+[
+"07_credit.md",
+"credit-dv01"
+]
+],
+"G-spread": [
+[
+"07_credit.md",
+"g-spread"
+]
+],
+"I-spread": [
+[
+"07_credit.md",
+"i-spread"
+]
+],
+"アセットスワップスプレッド": [
+[
+"07_credit.md",
+"asset-swap-spread-asw"
+]
+],
+"投資適格": [
+[
+"07_credit.md",
+"investment-grade-ig"
+]
+],
+"ハイイールド": [
+[
+"07_credit.md",
+"high-yield-hy"
+]
+],
+"CVA": [
+[
+"07_credit.md",
+"credit-valuation-adjustment"
+]
+],
+"エクスポージャープロファイル": [
+[
+"07_credit.md",
+"exposure-profile"
+]
+],
+"EPE": [
+[
+"07_credit.md",
+"expected-positive-exposure"
+]
+],
+"ネッティング": [
+[
+"07_credit.md",
+"netting"
+]
+],
+"プリペイメント": [
+[
+"08_securitization.md",
+"prepayment"
+]
+],
+"CPR": [
+[
+"08_securitization.md",
+"conditional-prepayment-rate"
+]
+],
+"SMM": [
+[
+"08_securitization.md",
+"single-monthly-mortality"
+]
+],
+"PSA": [
+[
+"08_securitization.md",
+"public-securities-association-model"
+]
+],
+"加重平均年限": [
+[
+"08_securitization.md",
+"weighted-average-life-wal"
+]
+],
+"バーンアウト": [
+[
+"08_securitization.md",
+"burnout"
+]
+],
+"MC-OAS": [
+[
+"08_securitization.md",
+"monte-carlo-oas"
+]
+],
+"パス依存": [
+[
+"08_securitization.md",
+"path-dependent"
+]
+],
+"オプションコスト": [
+[
+"08_securitization.md",
+"option-cost"
+]
+],
+"金利インセンティブ": [
+[
+"08_securitization.md",
+"refinancing-incentive"
+]
+],
+"機構MBS": [
+[
+"08_securitization.md",
+"jhf-mbs-agency-rmbs"
+]
+],
+"超過担保": [
+[
+"08_securitization.md",
+"over-collateralization-oc"
+]
+],
+"団体信用生命保険": [
+[
+"08_securitization.md",
+"group-credit-life-insurance"
+]
+],
+"ディスクロージャー": [
+[
+"08_securitization.md",
+"disclosure"
+]
+],
+"rich/cheap": [
+[
+"09_trading.md",
+"rich-cheap"
+]
+],
+"フィット残差": [
+[
+"09_trading.md",
+"fitted-residual"
+]
+],
+"平均回帰半減期": [
+[
+"09_trading.md",
+"mean-reversion-half-life"
+]
+],
+"Zスコア": [
+[
+"09_trading.md",
+"z-score"
+]
+],
+"on-the-run": [
+[
+"09_trading.md",
+"on-the-run"
+]
+],
+"キャリー": [
+[
+"09_trading.md",
+"carry"
+]
+],
+"ロールダウン": [
+[
+"09_trading.md",
+"rolldown"
+]
+],
+"レポ": [
+[
+"09_trading.md",
+"repo"
+]
+],
+"ブレークイーブンインフレ": [
+[
+"09_trading.md",
+"break-even-inflation-bei"
+]
+],
+"コンバージョンファクター": [
+[
+"09_trading.md",
+"conversion-factor"
+]
+],
+"CTD": [
+[
+"09_trading.md",
+"cheapest-to-deliver"
+]
+],
+"インプライドレポ": [
+[
+"09_trading.md",
+"implied-repo-rate"
+]
+],
+"ネットベーシス": [
+[
+"09_trading.md",
+"net-basis"
+]
+],
+"DV01ニュートラル": [
+[
+"09_trading.md",
+"dv01-neutral"
+]
+],
+"リスクウェイト": [
+[
+"09_trading.md",
+"risk-weighting"
+]
+],
+"PnL分解": [
+[
+"09_trading.md",
+"pnl-attribution"
+]
+],
+"ルックアヘッドバイアス": [
+[
+"09_trading.md",
+"look-ahead-bias"
+]
+],
+"最大ドローダウン": [
+[
+"09_trading.md",
+"maximum-drawdown"
+]
+],
+"過剰適合": [
+[
+"09_trading.md",
+"overfitting"
+]
+],
+"RFQ": [
+[
+"09_trading.md",
+"request-for-quote"
+]
+],
+"ミッド": [
+[
+"09_trading.md",
+"mid"
+]
+],
+"クォート": [
+[
+"09_trading.md",
+"quote"
+]
+],
+"マーケットメイク": [
+[
+"09_trading.md",
+"market-making"
+]
+],
+"在庫リスク": [
+[
+"09_trading.md",
+"inventory-risk"
+]
+],
+"モニタリング": [
+[
+"09_trading.md",
+"monitoring"
+]
+],
+"アラート閾値": [
+[
+"09_trading.md",
+"alert-threshold"
+]
+],
+"シグナル": [
+[
+"09_trading.md",
+"signal"
+]
+],
+"誤報率": [
+[
+"09_trading.md",
+"false-alarm-rate"
+]
+],
+"免疫化": [
+[
+"10_portfolio.md",
+"immunization"
+]
+],
+"ALM": [
+[
+"10_portfolio.md",
+"asset-liability-management"
+]
+],
+"サープラス": [
+[
+"10_portfolio.md",
+"surplus"
+]
+],
+"デュレーションギャップ": [
+[
+"10_portfolio.md",
+"duration-gap"
+]
+],
+"CFマッチング": [
+[
+"10_portfolio.md",
+"cash-flow-matching"
+]
+],
+"トラッキングエラー": [
+[
+"10_portfolio.md",
+"tracking-error"
+]
+],
+"完全法": [
+[
+"10_portfolio.md",
+"full-replication"
+]
+],
+"層化サンプリング": [
+[
+"10_portfolio.md",
+"stratified-sampling"
+]
+],
+"セル法": [
+[
+"10_portfolio.md",
+"cell-approach"
+]
+],
+"ファクターリスクモデル": [
+[
+"10_portfolio.md",
+"factor-risk-model"
+]
+],
+"凸最適化": [
+[
+"10_portfolio.md",
+"convex-optimization"
+]
+],
+"回転率制約": [
+[
+"10_portfolio.md",
+"turnover-constraint"
+]
+],
+"シャドープライス": [
+[
+"10_portfolio.md",
+"shadow-price"
+]
+]
+}

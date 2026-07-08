@@ -204,7 +204,11 @@
 # %%
 import numpy as np
 import matplotlib.pyplot as plt
-plt.rcParams["font.family"] = ["Hiragino Sans", "Yu Gothic", "Meiryo", "IPAexGothic", "Noto Sans CJK JP", "Arial Unicode MS", "DejaVu Sans"]
+import matplotlib.font_manager as _fm
+for _f in ["Hiragino Sans", "Yu Gothic", "Meiryo", "IPAexGothic", "Noto Sans CJK JP", "Noto Sans JP", "TakaoPGothic", "IPAPGothic"]:
+    if any(_f == _n.name for _n in _fm.fontManager.ttflist):
+        plt.rcParams["font.family"] = _f
+        break
 plt.rcParams["axes.unicode_minus"] = False
 import pandas as pd
 
@@ -584,8 +588,8 @@ for T in [2, 5, 10, 30]:
 #
 # | 用語 | 英語 | 一行定義 |
 # |---|---|---|
-# | キャリー | carry | 利息収入からファンディング費用（レポ）を差し引いた、時間で稼ぐ分 |
-# | ロールダウン | rolldown | カーブ不変でも満期が近づき曲線を滑り降りて生じる価格変化 |
-# | フォワードレート | forward rate | 割引係数比から定まる将来区間の金利。キャリー＋ロールのブレークイーブン |
-# | レポ | repo | 債券を担保に短期資金を調達する現先取引。ファンディング費用を決める |
-# | ブレークイーブンインフレ | break-even inflation (BEI) | 名目利回り − 実質利回り。期待インフレ＋インフレリスクプレミアム |
+# | [キャリー](../../glossary/09_trading.md#carry) | carry | 利息収入からファンディング費用（レポ）を差し引いた、時間で稼ぐ分 |
+# | [ロールダウン](../../glossary/09_trading.md#rolldown) | rolldown | カーブ不変でも満期が近づき曲線を滑り降りて生じる価格変化 |
+# | [フォワードレート](../../glossary/09_trading.md#forward-rate) | forward rate | 割引係数比から定まる将来区間の金利。キャリー＋ロールのブレークイーブン |
+# | [レポ](../../glossary/09_trading.md#repo) | repo | 債券を担保に短期資金を調達する現先取引。ファンディング費用を決める |
+# | [ブレークイーブンインフレ](../../glossary/09_trading.md#break-even-inflation-bei) | break-even inflation (BEI) | 名目利回り − 実質利回り。期待インフレ＋インフレリスクプレミアム |

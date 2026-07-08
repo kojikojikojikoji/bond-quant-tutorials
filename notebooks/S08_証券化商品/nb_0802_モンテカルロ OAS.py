@@ -150,7 +150,11 @@
 import numpy as np
 import matplotlib
 import matplotlib.pyplot as plt
-plt.rcParams["font.family"] = ["Hiragino Sans", "Yu Gothic", "Meiryo", "IPAexGothic", "Noto Sans CJK JP", "Arial Unicode MS", "DejaVu Sans"]
+import matplotlib.font_manager as _fm
+for _f in ["Hiragino Sans", "Yu Gothic", "Meiryo", "IPAexGothic", "Noto Sans CJK JP", "Noto Sans JP", "TakaoPGothic", "IPAPGothic"]:
+    if any(_f == _n.name for _n in _fm.fontManager.ttflist):
+        plt.rcParams["font.family"] = _f
+        break
 plt.rcParams["axes.unicode_minus"] = False
 import pandas as pd
 from scipy.optimize import brentq
@@ -532,9 +536,9 @@ display(table.round(1))
 #
 # | 用語 | 英語 | 一行定義 |
 # |---|---|---|
-# | MC-OAS | Monte Carlo OAS | 金利パスをMC生成し、平均価格が市場価格に一致するスプレッドとしてOASを求解する評価法 |
-# | OAS | option-adjusted spread | 内包オプションをCF側で織り込んだ後に残る、パス割引への一律上乗せスプレッド |
-# | Zスプレッド | Z-spread | ボラゼロの単一シナリオCFをカーブへ一律上乗せで割引いて価格一致させるスプレッド |
-# | パス依存 | path-dependent | CFが金利のたどった経路全体に依存する性質。MC評価が要る理由 |
-# | オプションコスト | option cost | Zスプレッド−OAS。借り手の繰上返済オプション価値のスプレッド換算 |
-# | 金利インセンティブ | refinancing incentive | WAC−借換金利。金利パスをプリペイメントモデルへ結合する接点 |
+# | [MC-OAS](../../glossary/08_securitization.md#monte-carlo-oas) | Monte Carlo OAS | 金利パスをMC生成し、平均価格が市場価格に一致するスプレッドとしてOASを求解する評価法 |
+# | [OAS](../../glossary/08_securitization.md#option-adjusted-spread) | option-adjusted spread | 内包オプションをCF側で織り込んだ後に残る、パス割引への一律上乗せスプレッド |
+# | [Zスプレッド](../../glossary/08_securitization.md#z-spread-zero-volatility-spread) | Z-spread | ボラゼロの単一シナリオCFをカーブへ一律上乗せで割引いて価格一致させるスプレッド |
+# | [パス依存](../../glossary/08_securitization.md#path-dependent) | path-dependent | CFが金利のたどった経路全体に依存する性質。MC評価が要る理由 |
+# | [オプションコスト](../../glossary/08_securitization.md#option-cost) | option cost | Zスプレッド−OAS。借り手の繰上返済オプション価値のスプレッド換算 |
+# | [金利インセンティブ](../../glossary/08_securitization.md#refinancing-incentive) | refinancing incentive | WAC−借換金利。金利パスをプリペイメントモデルへ結合する接点 |

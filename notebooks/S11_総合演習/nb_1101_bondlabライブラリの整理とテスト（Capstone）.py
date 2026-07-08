@@ -151,7 +151,11 @@ import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 
-plt.rcParams["font.family"] = ["Hiragino Sans", "Yu Gothic", "Meiryo", "IPAexGothic", "Noto Sans CJK JP", "Arial Unicode MS", "DejaVu Sans"]
+import matplotlib.font_manager as _fm
+for _f in ["Hiragino Sans", "Yu Gothic", "Meiryo", "IPAexGothic", "Noto Sans CJK JP", "Noto Sans JP", "TakaoPGothic", "IPAPGothic"]:
+    if any(_f == _n.name for _n in _fm.fontManager.ttflist):
+        plt.rcParams["font.family"] = _f
+        break
 plt.rcParams["axes.unicode_minus"] = False
 # --- bondlab の全層を1つの名前空間から import する（層が繋がっている証拠） ---
 import bondlab
@@ -535,7 +539,7 @@ print("全テスト緑：bondlab は動く状態にある")
 #
 # | 用語 | 英語 | 一行定義 |
 # |---|---|---|
-# | 回帰テスト | regression test | 過去に修正したバグの再発を検知するため、既知の正しい挙動を固定するテスト |
-# | カバレッジ | coverage | テストがコードのどれだけの行・分岐を実行したかの割合 |
-# | API設計 | API design | 公開する関数・クラスの名前・引数・返り値を、使いやすく壊れにくく定める設計 |
-# | セマンティックバージョニング | semantic versioning | MAJOR.MINOR.PATCH で互換性の意味を約束するバージョン付け規約 |
+# | [回帰テスト](../../glossary/00_tooling.md#regression-test) | regression test | 過去に修正したバグの再発を検知するため、既知の正しい挙動を固定するテスト |
+# | [カバレッジ](../../glossary/00_tooling.md#coverage) | coverage | テストがコードのどれだけの行・分岐を実行したかの割合 |
+# | [API設計](../../glossary/00_tooling.md#api-design) | API design | 公開する関数・クラスの名前・引数・返り値を、使いやすく壊れにくく定める設計 |
+# | [セマンティックバージョニング](../../glossary/00_tooling.md#semantic-versioning) | semantic versioning | MAJOR.MINOR.PATCH で互換性の意味を約束するバージョン付け規約 |

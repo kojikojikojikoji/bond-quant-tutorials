@@ -489,7 +489,11 @@ print(f"バーベル KRD合計 = {krd_barbell.sum():.4f}（全体デュレーシ
 # %%
 import matplotlib.pyplot as plt
 
-plt.rcParams["font.family"] = ["Hiragino Sans", "Yu Gothic", "Meiryo", "IPAexGothic", "Noto Sans CJK JP", "Arial Unicode MS", "DejaVu Sans"]
+import matplotlib.font_manager as _fm
+for _f in ["Hiragino Sans", "Yu Gothic", "Meiryo", "IPAexGothic", "Noto Sans CJK JP", "Noto Sans JP", "TakaoPGothic", "IPAPGothic"]:
+    if any(_f == _n.name for _n in _fm.fontManager.ttflist):
+        plt.rcParams["font.family"] = _f
+        break
 plt.rcParams["axes.unicode_minus"] = False
 fig, ax = plt.subplots(figsize=(9, 5))
 x = np.arange(len(key_tenors))
@@ -613,8 +617,8 @@ print("→ フラットナーではバーベルが勝つ（符号が反転する
 #
 # | 用語 | 英語 | 一行定義 |
 # |---|---|---|
-# | キーレートデュレーション | key rate duration (KRD) | 特定テナーのゼロレートだけを動かしたときの相対感応度（年） |
-# | パーシャルDV01 | partial DV01 | 特定テナーを1bp動かしたときの価値変化額。テナー別ヘッジ数量に直結する |
-# | バケッティング | bucketing | 連続的なカーブを有限個のキーテナーへ割り当てるリスク分解の設計 |
-# | バーベル | barbell | 短期と長期に分けて保有するポジション。中期が薄い |
-# | ブレット | bullet | 単一年限に集中させたポジション |
+# | [キーレートデュレーション](../../glossary/03_risk.md#key-rate-duration-krd) | key rate duration (KRD) | 特定テナーのゼロレートだけを動かしたときの相対感応度（年） |
+# | [パーシャルDV01](../../glossary/03_risk.md#partial-dv01-dv01) | partial DV01 | 特定テナーを1bp動かしたときの価値変化額。テナー別ヘッジ数量に直結する |
+# | [バケッティング](../../glossary/03_risk.md#bucketing) | bucketing | 連続的なカーブを有限個のキーテナーへ割り当てるリスク分解の設計 |
+# | [バーベル](../../glossary/03_risk.md#barbell) | barbell | 短期と長期に分けて保有するポジション。中期が薄い |
+# | [ブレット](../../glossary/03_risk.md#bullet) | bullet | 単一年限に集中させたポジション |

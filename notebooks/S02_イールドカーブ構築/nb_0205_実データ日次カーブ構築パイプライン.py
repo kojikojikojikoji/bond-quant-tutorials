@@ -154,7 +154,11 @@ import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 
-plt.rcParams["font.family"] = ["Hiragino Sans", "Yu Gothic", "Meiryo", "IPAexGothic", "Noto Sans CJK JP", "Arial Unicode MS", "DejaVu Sans"]
+import matplotlib.font_manager as _fm
+for _f in ["Hiragino Sans", "Yu Gothic", "Meiryo", "IPAexGothic", "Noto Sans CJK JP", "Noto Sans JP", "TakaoPGothic", "IPAPGothic"]:
+    if any(_f == _n.name for _n in _fm.fontManager.ttflist):
+        plt.rcParams["font.family"] = _f
+        break
 plt.rcParams["axes.unicode_minus"] = False
 from bondlab.curve import bootstrap_par, DiscountCurve
 
@@ -508,7 +512,7 @@ plt.show()
 #
 # | 用語 | 英語 | 一行定義 |
 # |---|---|---|
-# | ポイントインタイム | point-in-time | 各時点の計算にその時点までの情報のみを使い、先読みを排する原則 |
-# | 外れ値検出 | outlier detection | 前日比 $z$ スコア等で、疑わしい入力点を機械的に警告する仕組み |
-# | リグレッションテスト | regression test | 常に成り立つ不変条件（例：パー再現）を毎回検証し、退行を捕える |
-# | フォールバック | fallback | 構築失敗時に直近の good カーブを持ち越し、運用を止めない縮退設計 |
+# | [ポイントインタイム](../../glossary/02_curves.md#point-in-time) | point-in-time | 各時点の計算にその時点までの情報のみを使い、先読みを排する原則 |
+# | [外れ値検出](../../glossary/02_curves.md#outlier-detection) | outlier detection | 前日比 $z$ スコア等で、疑わしい入力点を機械的に警告する仕組み |
+# | [リグレッションテスト](../../glossary/02_curves.md#regression-test) | regression test | 常に成り立つ不変条件（例：パー再現）を毎回検証し、退行を捕える |
+# | [フォールバック](../../glossary/02_curves.md#fallback) | fallback | 構築失敗時に直近の good カーブを持ち越し、運用を止めない縮退設計 |

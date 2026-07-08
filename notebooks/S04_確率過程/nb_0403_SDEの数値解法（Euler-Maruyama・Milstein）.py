@@ -149,7 +149,11 @@
 import numpy as np
 import matplotlib.pyplot as plt
 
-plt.rcParams["font.family"] = ["Hiragino Sans", "Yu Gothic", "Meiryo", "IPAexGothic", "Noto Sans CJK JP", "Arial Unicode MS", "DejaVu Sans"]
+import matplotlib.font_manager as _fm
+for _f in ["Hiragino Sans", "Yu Gothic", "Meiryo", "IPAexGothic", "Noto Sans CJK JP", "Noto Sans JP", "TakaoPGothic", "IPAPGothic"]:
+    if any(_f == _n.name for _n in _fm.fontManager.ttflist):
+        plt.rcParams["font.family"] = _f
+        break
 plt.rcParams["axes.unicode_minus"] = False
 import bondlab
 from bondlab.sim import simulate_sde
@@ -478,8 +482,8 @@ plt.show()
 #
 # | 用語 | 英語 | 一行定義 |
 # |---|---|---|
-# | Euler-Maruyama法 | Euler-Maruyama method | SDE を $X_{i+1}=X_i+a\,\Delta t+b\,\Delta W_i$ で前進する最も基本的な離散化。強収束次数 0.5 |
-# | Milstein法 | Milstein method | Euler に $\tfrac12 b\,\partial_x b(\Delta W^2-\Delta t)$ を加えた離散化。強収束次数 1.0 |
-# | 強収束 | strong convergence | 同一ブラウン運動でのパス単位誤差 $\mathbb{E}[|X_N-X_T|]$ が $O(\Delta t^{\gamma})$ で減る速さ |
-# | 弱収束 | weak convergence | 期待値の誤差 $|\mathbb{E}[g(X_N)]-\mathbb{E}[g(X_T)]|$ が $O(\Delta t^{\beta})$ で減る速さ。価格評価はこれで足りる |
-# | full truncation | full truncation | CIR 等の拡散項で $\sqrt{\max(r,0)}$ を使い、離散化で負に振れても破綻させない修正 |
+# | [Euler-Maruyama法](../../glossary/04_stochastic.md#euler-maruyama-method) | Euler-Maruyama method | SDE を $X_{i+1}=X_i+a\,\Delta t+b\,\Delta W_i$ で前進する最も基本的な離散化。強収束次数 0.5 |
+# | [Milstein法](../../glossary/04_stochastic.md#milstein-method) | Milstein method | Euler に $\tfrac12 b\,\partial_x b(\Delta W^2-\Delta t)$ を加えた離散化。強収束次数 1.0 |
+# | [強収束](../../glossary/04_stochastic.md#strong-convergence) | strong convergence | 同一ブラウン運動でのパス単位誤差 $\mathbb{E}[|X_N-X_T|]$ が $O(\Delta t^{\gamma})$ で減る速さ |
+# | [弱収束](../../glossary/04_stochastic.md#weak-convergence) | weak convergence | 期待値の誤差 $|\mathbb{E}[g(X_N)]-\mathbb{E}[g(X_T)]|$ が $O(\Delta t^{\beta})$ で減る速さ。価格評価はこれで足りる |
+# | [full truncation](../../glossary/04_stochastic.md#full-truncation) | full truncation | CIR 等の拡散項で $\sqrt{\max(r,0)}$ を使い、離散化で負に振れても破綻させない修正 |

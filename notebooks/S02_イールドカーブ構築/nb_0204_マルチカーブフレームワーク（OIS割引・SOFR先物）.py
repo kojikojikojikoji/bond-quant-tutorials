@@ -521,7 +521,11 @@ display(diff_table)
 # %%
 import matplotlib.pyplot as plt
 
-plt.rcParams["font.family"] = ["Hiragino Sans", "Yu Gothic", "Meiryo", "IPAexGothic", "Noto Sans CJK JP", "Arial Unicode MS", "DejaVu Sans"]
+import matplotlib.font_manager as _fm
+for _f in ["Hiragino Sans", "Yu Gothic", "Meiryo", "IPAexGothic", "Noto Sans CJK JP", "Noto Sans JP", "TakaoPGothic", "IPAPGothic"]:
+    if any(_f == _n.name for _n in _fm.fontManager.ttflist):
+        plt.rcParams["font.family"] = _f
+        break
 plt.rcParams["axes.unicode_minus"] = False
 base_ois = np.array(ois_rates)
 base_swap = np.array(swap_rates)
@@ -573,9 +577,9 @@ plt.show()
 #
 # | 用語 | 英語 | 一行定義 |
 # |---|---|---|
-# | OIS | overnight index swap | 固定と翌日物金利の複利を交換するスワップ。担保金利の代理でカーブを組む |
-# | SOFR/TONA | secured overnight financing rate / Tokyo overnight average rate | 米ドル・円の後決め翌日物RFR。LIBORの後継 |
-# | CSA | credit support annex | 担保のやり取りを定める付属契約。割引に使う担保金利を規定する |
-# | RFR | risk-free rate | 取引ベースの翌日物リスクフリー金利。SOFR/TONA/SONIA等 |
-# | デュアルブートストラップ | dual bootstrap | OIS割引を固定し推計カーブをスワップから剥ぎ取る2段のカーブ構築 |
-# | 凸性調整 | convexity adjustment | 先物レートとフォワード（FRA）レートの差。日々の値洗いに由来する |
+# | [OIS](../../glossary/02_curves.md#overnight-index-swap) | overnight index swap | 固定と翌日物金利の複利を交換するスワップ。担保金利の代理でカーブを組む |
+# | [SOFR/TONA](../../glossary/02_curves.md#secured-overnight-financing-rate-tokyo-overnight-average-rate) | secured overnight financing rate / Tokyo overnight average rate | 米ドル・円の後決め翌日物RFR。LIBORの後継 |
+# | [CSA](../../glossary/02_curves.md#credit-support-annex) | credit support annex | 担保のやり取りを定める付属契約。割引に使う担保金利を規定する |
+# | [RFR](../../glossary/02_curves.md#risk-free-rate) | risk-free rate | 取引ベースの翌日物リスクフリー金利。SOFR/TONA/SONIA等 |
+# | [デュアルブートストラップ](../../glossary/02_curves.md#dual-bootstrap) | dual bootstrap | OIS割引を固定し推計カーブをスワップから剥ぎ取る2段のカーブ構築 |
+# | [凸性調整](../../glossary/02_curves.md#convexity-adjustment) | convexity adjustment | 先物レートとフォワード（FRA）レートの差。日々の値洗いに由来する |

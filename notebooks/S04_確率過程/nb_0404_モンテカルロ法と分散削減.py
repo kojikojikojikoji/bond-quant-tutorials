@@ -182,7 +182,11 @@
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
-plt.rcParams["font.family"] = ["Hiragino Sans", "Yu Gothic", "Meiryo", "IPAexGothic", "Noto Sans CJK JP", "Arial Unicode MS", "DejaVu Sans"]
+import matplotlib.font_manager as _fm
+for _f in ["Hiragino Sans", "Yu Gothic", "Meiryo", "IPAexGothic", "Noto Sans CJK JP", "Noto Sans JP", "TakaoPGothic", "IPAPGothic"]:
+    if any(_f == _n.name for _n in _fm.fontManager.ttflist):
+        plt.rcParams["font.family"] = _f
+        break
 plt.rcParams["axes.unicode_minus"] = False
 from scipy.stats import norm, qmc
 
@@ -611,8 +615,8 @@ plt.show()
 #
 # | 用語 | 英語 | 一行定義 |
 # |---|---|---|
-# | 標準誤差 | standard error | 推定量のばらつき $\sigma/\sqrt{n}$。MC 精度の尺度で $1/\sqrt{n}$ で縮む |
-# | 対照変量法 | antithetic variates | $Z$ と $-Z$ を対にして負の相関で分散を下げる手法 |
-# | 制御変量法 | control variate | 既知平均をもつ相関変量で補正し、$1-\rho^2$ 倍に分散を下げる手法 |
-# | 準乱数 | quasi-random | 定義域を意図的に均一に埋める決定的点列。積分誤差が $1/\sqrt{n}$ より速い |
-# | Sobol系列 | Sobol sequence | 代表的な低食い違い量列。食い違い量 $O((\log n)^d/n)$ |
+# | [標準誤差](../../glossary/04_stochastic.md#standard-error) | standard error | 推定量のばらつき $\sigma/\sqrt{n}$。MC 精度の尺度で $1/\sqrt{n}$ で縮む |
+# | [対照変量法](../../glossary/04_stochastic.md#antithetic-variates) | antithetic variates | $Z$ と $-Z$ を対にして負の相関で分散を下げる手法 |
+# | [制御変量法](../../glossary/04_stochastic.md#control-variate) | control variate | 既知平均をもつ相関変量で補正し、$1-\rho^2$ 倍に分散を下げる手法 |
+# | [準乱数](../../glossary/04_stochastic.md#quasi-random) | quasi-random | 定義域を意図的に均一に埋める決定的点列。積分誤差が $1/\sqrt{n}$ より速い |
+# | [Sobol系列](../../glossary/04_stochastic.md#sobol-sequence) | Sobol sequence | 代表的な低食い違い量列。食い違い量 $O((\log n)^d/n)$ |

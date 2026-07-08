@@ -198,7 +198,11 @@
 import numpy as np
 import matplotlib.pyplot as plt
 
-plt.rcParams["font.family"] = ["Hiragino Sans", "Yu Gothic", "Meiryo", "IPAexGothic", "Noto Sans CJK JP", "Arial Unicode MS", "DejaVu Sans"]
+import matplotlib.font_manager as _fm
+for _f in ["Hiragino Sans", "Yu Gothic", "Meiryo", "IPAexGothic", "Noto Sans CJK JP", "Noto Sans JP", "TakaoPGothic", "IPAPGothic"]:
+    if any(_f == _n.name for _n in _fm.fontManager.ttflist):
+        plt.rcParams["font.family"] = _f
+        break
 plt.rcParams["axes.unicode_minus"] = False
 import bondlab
 from bondlab.curve import bootstrap_par
@@ -614,7 +618,7 @@ print("→ 金利上昇でペイヤースワップの EE が増え CVA も増え
 #
 # | 用語 | 英語 | 一行定義 |
 # |---|---|---|
-# | CVA | credit valuation adjustment | カウンターパーティの破綻損失を織り込む、デリバティブ価値の調整額 |
-# | エクスポージャープロファイル | exposure profile | 将来時点ごとの期待エクスポージャー $\mathrm{EE}(t)=\mathbb{E}[V(t)^+]$ の推移 |
-# | EPE | expected positive exposure | 期待エクスポージャーの時間平均。規制資本などの入力になるスカラー |
-# | ネッティング | netting | 同一相手との複数取引を相殺し、純額でエクスポージャーを測る取り決め |
+# | [CVA](../../glossary/07_credit.md#credit-valuation-adjustment) | credit valuation adjustment | カウンターパーティの破綻損失を織り込む、デリバティブ価値の調整額 |
+# | [エクスポージャープロファイル](../../glossary/07_credit.md#exposure-profile) | exposure profile | 将来時点ごとの期待エクスポージャー $\mathrm{EE}(t)=\mathbb{E}[V(t)^+]$ の推移 |
+# | [EPE](../../glossary/07_credit.md#expected-positive-exposure) | expected positive exposure | 期待エクスポージャーの時間平均。規制資本などの入力になるスカラー |
+# | [ネッティング](../../glossary/07_credit.md#netting) | netting | 同一相手との複数取引を相殺し、純額でエクスポージャーを測る取り決め |

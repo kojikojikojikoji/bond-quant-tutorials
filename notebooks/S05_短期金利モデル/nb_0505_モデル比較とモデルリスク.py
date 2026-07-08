@@ -148,7 +148,11 @@
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
-plt.rcParams["font.family"] = ["Hiragino Sans", "Yu Gothic", "Meiryo", "IPAexGothic", "Noto Sans CJK JP", "Arial Unicode MS", "DejaVu Sans"]
+import matplotlib.font_manager as _fm
+for _f in ["Hiragino Sans", "Yu Gothic", "Meiryo", "IPAexGothic", "Noto Sans CJK JP", "Noto Sans JP", "TakaoPGothic", "IPAPGothic"]:
+    if any(_f == _n.name for _n in _fm.fontManager.ttflist):
+        plt.rcParams["font.family"] = _f
+        break
 plt.rcParams["axes.unicode_minus"] = False
 from scipy.optimize import least_squares
 from scipy.stats import norm
@@ -637,8 +641,8 @@ display(neg_tbl)
 #
 # | 用語 | 英語 | 一行定義 |
 # |---|---|---|
-# | モデルリスク | model risk | モデルの誤りや誤用が誤った価格・リスク判断・損失を生む可能性 |
-# | モデルバリデーション | model validation | 前提・実装・出力を独立に検証し、モデルの妥当性と限界を評価する営み |
-# | ベンチマークモデル | benchmark model | 検証対象と突き合わせる独立な基準モデル・別実装 |
-# | 感応度分析 | sensitivity analysis | 入力を振って出力の変化を測り、リスクの所在を特定する手法 |
-# | G2++／LMM | G2++ / LIBOR Market Model | 多因子・カーブ全体モデル。1ファクターの表現力不足を補う拡張 |
+# | [モデルリスク](../../glossary/05_rate_models.md#model-risk) | model risk | モデルの誤りや誤用が誤った価格・リスク判断・損失を生む可能性 |
+# | [モデルバリデーション](../../glossary/05_rate_models.md#model-validation) | model validation | 前提・実装・出力を独立に検証し、モデルの妥当性と限界を評価する営み |
+# | [ベンチマークモデル](../../glossary/05_rate_models.md#benchmark-model) | benchmark model | 検証対象と突き合わせる独立な基準モデル・別実装 |
+# | [感応度分析](../../glossary/05_rate_models.md#sensitivity-analysis) | sensitivity analysis | 入力を振って出力の変化を測り、リスクの所在を特定する手法 |
+# | [G2++／LMM](../../glossary/05_rate_models.md#g2-libor-market-model) | G2++ / LIBOR Market Model | 多因子・カーブ全体モデル。1ファクターの表現力不足を補う拡張 |

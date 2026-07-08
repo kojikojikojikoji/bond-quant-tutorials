@@ -142,7 +142,11 @@ import pandas as pd
 import matplotlib
 import matplotlib.pyplot as plt
 
-plt.rcParams["font.family"] = ["Hiragino Sans", "Yu Gothic", "Meiryo", "IPAexGothic", "Noto Sans CJK JP", "Arial Unicode MS", "DejaVu Sans"]
+import matplotlib.font_manager as _fm
+for _f in ["Hiragino Sans", "Yu Gothic", "Meiryo", "IPAexGothic", "Noto Sans CJK JP", "Noto Sans JP", "TakaoPGothic", "IPAPGothic"]:
+    if any(_f == _n.name for _n in _fm.fontManager.ttflist):
+        plt.rcParams["font.family"] = _f
+        break
 plt.rcParams["axes.unicode_minus"] = False
 import bondlab
 from bondlab.mbs import (
@@ -579,7 +583,7 @@ print(f"WAL短縮幅（-40bp→+120bp）  日本型: {wal_curve_jp[0]-wal_curve_
 #
 # | 用語 | 英語 | 一行定義 |
 # |---|---|---|
-# | 機構MBS | JHF MBS / Agency RMBS | 住宅金融支援機構が住宅ローン債権を裏付けに発行する日本最大の証券化商品 |
-# | 超過担保 | over-collateralization | 裏付けプール残高を発行債券残高より多く置き、信用損失を先に吸収させる仕組み |
-# | 団体信用生命保険 | group credit life insurance | 借入人の死亡等でローンが一括弁済される保険。金利に鈍感な非自発的償還を生む |
-# | ディスクロージャー | disclosure | 機構が月次で公表する残高・期限前償還率・延滞率等の情報開示 |
+# | [機構MBS](../../glossary/08_securitization.md#jhf-mbs-agency-rmbs) | JHF MBS / Agency RMBS | 住宅金融支援機構が住宅ローン債権を裏付けに発行する日本最大の証券化商品 |
+# | [超過担保](../../glossary/08_securitization.md#over-collateralization-oc) | over-collateralization | 裏付けプール残高を発行債券残高より多く置き、信用損失を先に吸収させる仕組み |
+# | [団体信用生命保険](../../glossary/08_securitization.md#group-credit-life-insurance) | group credit life insurance | 借入人の死亡等でローンが一括弁済される保険。金利に鈍感な非自発的償還を生む |
+# | [ディスクロージャー](../../glossary/08_securitization.md#disclosure) | disclosure | 機構が月次で公表する残高・期限前償還率・延滞率等の情報開示 |

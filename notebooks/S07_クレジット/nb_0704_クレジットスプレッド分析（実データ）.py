@@ -154,7 +154,11 @@ import datetime as dt
 import numpy as np
 import matplotlib
 import matplotlib.pyplot as plt
-plt.rcParams["font.family"] = ["Hiragino Sans", "Yu Gothic", "Meiryo", "IPAexGothic", "Noto Sans CJK JP", "Arial Unicode MS", "DejaVu Sans"]
+import matplotlib.font_manager as _fm
+for _f in ["Hiragino Sans", "Yu Gothic", "Meiryo", "IPAexGothic", "Noto Sans CJK JP", "Noto Sans JP", "TakaoPGothic", "IPAPGothic"]:
+    if any(_f == _n.name for _n in _fm.fontManager.ttflist):
+        plt.rcParams["font.family"] = _f
+        break
 plt.rcParams["axes.unicode_minus"] = False
 from scipy.optimize import brentq
 
@@ -495,8 +499,8 @@ for name in ["IG", "HY"]:
 #
 # | 用語 | 英語 | 一行定義 |
 # |---|---|---|
-# | G-spread | G-spread | 社債利回りと同年限国債利回り（補間）の差。単一利回りどうしの差 |
-# | I-spread | I-spread | 社債利回りと同年限スワップレート（補間）の差。基準をスワップにしたG-spread |
-# | アセットスワップスプレッド | asset swap spread (ASW) | 社債を固定→変動に交換するアセットスワップで受け取る、変動金利への上乗せ幅 |
-# | 投資適格 | investment grade (IG) | 格付 BBB−（Baa3）以上の相対的に信用力の高い区分 |
-# | ハイイールド | high yield (HY) | 格付 BB+（Ba1）以下の投機的等級。高スプレッド・高利回り |
+# | [G-spread](../../glossary/07_credit.md#g-spread) | G-spread | 社債利回りと同年限国債利回り（補間）の差。単一利回りどうしの差 |
+# | [I-spread](../../glossary/07_credit.md#i-spread) | I-spread | 社債利回りと同年限スワップレート（補間）の差。基準をスワップにしたG-spread |
+# | [アセットスワップスプレッド](../../glossary/07_credit.md#asset-swap-spread-asw) | asset swap spread (ASW) | 社債を固定→変動に交換するアセットスワップで受け取る、変動金利への上乗せ幅 |
+# | [投資適格](../../glossary/07_credit.md#investment-grade-ig) | investment grade (IG) | 格付 BBB−（Baa3）以上の相対的に信用力の高い区分 |
+# | [ハイイールド](../../glossary/07_credit.md#high-yield-hy) | high yield (HY) | 格付 BB+（Ba1）以下の投機的等級。高スプレッド・高利回り |

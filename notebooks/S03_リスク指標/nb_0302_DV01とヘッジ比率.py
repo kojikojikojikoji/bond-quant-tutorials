@@ -314,7 +314,11 @@ print(bump_tbl.to_string(index=False,
 # %%
 import matplotlib.pyplot as plt
 
-plt.rcParams["font.family"] = ["Hiragino Sans", "Yu Gothic", "Meiryo", "IPAexGothic", "Noto Sans CJK JP", "Arial Unicode MS", "DejaVu Sans"]
+import matplotlib.font_manager as _fm
+for _f in ["Hiragino Sans", "Yu Gothic", "Meiryo", "IPAexGothic", "Noto Sans CJK JP", "Noto Sans JP", "TakaoPGothic", "IPAPGothic"]:
+    if any(_f == _n.name for _n in _fm.fontManager.ttflist):
+        plt.rcParams["font.family"] = _f
+        break
 plt.rcParams["axes.unicode_minus"] = False
 fig, ax = plt.subplots(figsize=(8, 5))
 for method, marker, color in [("central", "o", "#1f77b4"), ("forward", "s", "#d62728")]:
@@ -571,8 +575,8 @@ plt.show()
 #
 # | 用語 | 英語 | 一行定義 |
 # |---|---|---|
-# | DV01 | dollar value of a basis point | 利回りを1bp動かしたときの価格変化額。$D_{\mathrm{mod}}\,P\times10^{-4}$ |
-# | BPV | basis point value | DV01 と同義。1bpあたりの価格感応度を金額で表したもの |
-# | ヘッジ比率 | hedge ratio | 対象と反対のDV01を持つためのヘッジ数量。$-\mathrm{DV01}_P/\mathrm{DV01}_H$ |
-# | ベーシスリスク | basis risk | 対象とヘッジ商品の利回りが完全連動せず残るリスク |
-# | 中心差分 | central difference | 前後を対称にバンプする数値微分。打ち切り誤差が $O(h^2)$ |
+# | [DV01](../../glossary/03_risk.md#dollar-value-of-a-basis-point) | dollar value of a basis point | 利回りを1bp動かしたときの価格変化額。$D_{\mathrm{mod}}\,P\times10^{-4}$ |
+# | [BPV](../../glossary/03_risk.md#basis-point-value) | basis point value | DV01 と同義。1bpあたりの価格感応度を金額で表したもの |
+# | [ヘッジ比率](../../glossary/03_risk.md#hedge-ratio) | hedge ratio | 対象と反対のDV01を持つためのヘッジ数量。$-\mathrm{DV01}_P/\mathrm{DV01}_H$ |
+# | [ベーシスリスク](../../glossary/03_risk.md#basis-risk) | basis risk | 対象とヘッジ商品の利回りが完全連動せず残るリスク |
+# | [中心差分](../../glossary/03_risk.md#central-difference) | central difference | 前後を対称にバンプする数値微分。打ち切り誤差が $O(h^2)$ |
