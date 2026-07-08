@@ -1,6 +1,6 @@
 """日次カーブモニタリングダッシュボード（Streamlit 版）。
 
-このアプリは notebook `notebooks/S11_capstone/nb_1103_dashboard.py` の
+このアプリは notebook `notebooks/S11_総合演習/nb_1103_dashboard.py` の
 `## スクラッチ実装` と**同一ロジック**の計算関数を用い、同じ6パネル＋アラート帯
 のダッシュボードを描画します。計算（compute_dashboard）と描画（render_dashboard）
 は notebook と概念的に共通で、ここでは Streamlit の UI（基準日と分位点の選択）を

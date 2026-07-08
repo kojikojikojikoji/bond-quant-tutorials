@@ -1,6 +1,6 @@
 """RFQ プライサーの FastAPI ラッパー（S11-2 notebook のプライサーを HTTP 化）。
 
-notebook `notebooks/S11_capstone/nb_1102_rfq_pricer.py` で作ったクォートエンジンを、
+notebook `notebooks/S11_総合演習/nb_1102_rfq_pricer.py` で作ったクォートエンジンを、
 電子取引プラットフォームから叩ける `/quote` エンドポイントとして公開する。ミッドは
 NSS カーブフィット値＋rich/cheap 残差、スプレッドはサイズ・在庫・ボラの関数で、
 Avellaneda-Stoikov のリザベーション価格で在庫スキューを与える（notebook と同一ロジック）。
